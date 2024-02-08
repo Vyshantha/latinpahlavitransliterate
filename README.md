@@ -1,2 +1,10 @@
-# latinpahlavitransliterate
-Transliterator between 𐭯𐭠𐭫𐭮𐭩𐭪 (Pahlavi) and Latin script
+# Transliterator between 𐭯𐭠𐭫𐭮𐭩𐭪 (Pahlavi) and Latin script
+An application that can work both online and offline (once the website is loaded on the browser) on the [𐭯𐭠𐭫𐭮𐭩𐭪 (Pahlavi)](https://vyshantha.github.io/latinpahlavitransliterate/) Transliterate website.
+
+Application can run on any type of device : ```Mobile, Tablet, Desktops and Laptops``` on operating systems like ```Android, Apple iOS, Apple Mac, Microsoft Windows and Linux``` on browsers such as ```Mozilla Firefox, Google Chrome, Microsoft Edge, Apple Safari, Opera and Brave```.
+
+The application completes transliteration of texts pasted or typed into the text area from 𐭯𐭠𐭫𐭮𐭩𐭪 (Pahlavi) script to Latin script and from Latin script to 𐭯𐭠𐭫𐭮𐭩𐭪 (Pahlavi) script.
+
+The application is yet to be perfected - "Work In Progress!" 
+
+  <img src="https://github.com/Vyshantha/multiscripteditor/blob/main/editorClient/src/assets/images/keyboard_to_construct.png" data-canonical-src="https://github.com/Vyshantha/multiscripteditor/blob/main/editorClient/src/assets/images/keyboard_to_construct.png" width="100" height="80" />
