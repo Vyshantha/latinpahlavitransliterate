@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">  
+    <title>𐭯𐭠𐭫𐭮𐭩𐭪 Pahlavi Transliterator</title>
+    <meta property="og:type"               content="article" />
+    <meta property="og:title"              content="𐭯𐭠𐭫𐭮𐭩𐭪 Pahlavi - Transliterator" />
+    <meta property="og:image"              content="Arshakuni_Arsacid_dynasty.png" />
+    <meta property="og:description"        content=" Latin Pahlavi 𐭯𐭠𐭫𐭮𐭩𐭪 " data-qmeta="keywords">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="Arshakuni_Arsacid_dynasty.png">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <table class="tab">
+          <tr>
+            <td class="widthOfTab ">
+              <button class="tablinks" onclick="openTab(event, 'Latin')" id="defaultOpen">Latin</button>
+            </td>
+            <td class="widthOfTab textPahlavi alignIcon">
+              <span class="tablinks pahlaviTab">𐭯𐭠𐭫𐭮𐭩𐭪</span>
+            </td>
+          </tr>
+        </table>
+        <div class="text-input">
+          <div id="Latin" class="tabcontent currentTab" dir="ltr">
+            <textarea spellcheck="false" id="textarea1" class="from-text" placeholder="(Latin)  
+            This is a sentence in Latin script. It is just an example sentence and this is not transliterated" onkeyup="transliterate()"></textarea>
+          </div>
+          <div id="Pahlavi" class="pahlaviTabText" dir="rtl">
+            <textarea spellcheck="false" id="textarea2" readonly class="to-text" placeholder="(𐭯𐭠𐭫𐭮𐭩𐭪) 
+            𐭥𐭩𐭠𐭬𐭥 𐭠𐭫𐭤𐭩𐭬 𐭠𐭫 𐭬𐭱𐭤 𐭠𐭤𐭩𐭤 𐭠𐭱𐭥 𐭠𐭤𐭩𐭤 𐭥𐭩𐭠𐭬𐭥 𐭪𐭤 𐭲𐭠𐭬𐭥 𐭫𐭡𐭭𐭩 𐭩𐭱𐭥𐭠𐭫 𐭠𐭤𐭩𐭤 𐭱𐭫𐭧𐭭𐭩 𐭠𐭫𐭩𐭪𐭬" dir="rtl" onkeyup="transliterate()"></textarea>
+          </div>
+        </div>
+        <ul class="controls">
+          <li class="row from">
+            <div class="icons tooltip" onmousedown="show1()">
+              <i id="from" class="fas fa-copy" onclick="copyContent1()"></i>
+              <div id="tooltip1" onmouseout="hide()" class="tooltiptext">
+                <span class="latinCopyText">Copy Transliteration text - 𐭯𐭠𐭫𐭮𐭩𐭪</span>
+              </div>
+            </div>
+          </li>
+          <li class="exchange">
+            <i class="fas fa-exchange-alt" onclick="swapTransliteration()"></i>
+          </li>
+          <li class="row to">
+            <div class="icons tooltip" onmousedown="show2()">
+              <i id="to" class="fas fa-copy" onclick="copyContent2()"></i>
+              <div id="tooltip2" onmouseout="hide()" class="tooltiptext">
+                <span class="textPahlavi">Copy 𐭯𐭠𐭫𐭮𐭩𐭪</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <button onclick="transliterate()"><span class="footerLatin">Latin</span> | <span class="footerPahlavi">𐭯𐭠𐭫𐭮𐭩𐭪</span></button>
+    </div>
+    
+    <div class="footerOfPage">
+      &nbsp;&nbsp;&nbsp;<img src="Arshakuni_Arsacid_dynasty.png" alt="𐭯𐭠𐭫𐭮𐭩𐭪 - World Scripts Explorer" class="footerImage" height="30px" width="40px"/>&nbsp;&nbsp;&nbsp;<a href="https://worldscriptsexplorer.page/pal" target="_blank">𐭯𐭠𐭫𐭮𐭩𐭪</a>&nbsp;&nbsp;&nbsp;2023 yshant&nbsp;&nbsp;&nbsp;
+    </div>
+    <script src="transliterate.js"></script>
+  </body>
+</html>
