@@ -122,6 +122,19 @@ body{
   border-radius: 5px;
   background: #a85a00;
 }
+.middlePersianScripts {
+  cursor: pointer;
+}
+.middlePersianScriptsSmall {
+  cursor: pointer;
+  padding-left: 30px;
+}
+.middlePersianScripts:hover {
+  cursor: pointer;
+}
+.middlePersianScriptsSmall:hover {
+  cursor: pointer;
+}
 .textPahlavi {
   font-size: 0.8em;
   width: 60%;
