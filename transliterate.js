@@ -140,6 +140,18 @@ function copyContent2() {
     10BDE BOOK PAHLAVI PUNCTUATION THREE CIRCLES
 */
 
+function loadBookPahlavi() {
+
+}
+
+function loadInscriptionalPahlavi() {
+
+}
+
+function loadAvestan() {
+  
+}
+
 function transliterate() {
   if (document.getElementById("textarea1").value.indexOf("script>") > -1 || document.getElementById("textarea2").value.indexOf("script>") > -1) {
     document.getElementById("textarea1").value = "";
