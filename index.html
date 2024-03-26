@@ -2,11 +2,11 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">  
-    <title>𐭯𐭠𐭫𐭮𐭩𐭪 Pahlavi Transliterator</title>
+    <title>𐭯𐭠𐭫𐭮𐭩𐭪-𐬀𐬬𐬯𐬙𐬁𐬥-Pahlavi Avestan Transliterator</title>
     <meta property="og:type"               content="article" />
-    <meta property="og:title"              content="𐭯𐭠𐭫𐭮𐭩𐭪 Pahlavi - Transliterator" />
+    <meta property="og:title"              content="𐭯𐭠𐭫𐭮𐭩𐭪-𐬀𐬬𐬯𐬙𐬁𐬥-Pahlavi Avestan - Transliterator" />
     <meta property="og:image"              content="Arshakuni_Arsacid_dynasty.png" />
-    <meta property="og:description"        content=" Latin Pahlavi 𐭯𐭠𐭫𐭮𐭩𐭪 " data-qmeta="keywords">
+    <meta property="og:description"        content=" Latin 𐭯𐭠𐭫𐭮𐭩𐭪-𐬀𐬬𐬯𐬙𐬁𐬥-Pahlavi Avestan" data-qmeta="keywords">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="Arshakuni_Arsacid_dynasty.png">
     <link rel="stylesheet" href="style.css">
@@ -22,18 +22,23 @@
               <button class="tablinks" onclick="openTab(event, 'Latin')" id="defaultOpen">Latin</button>
             </td>
             <td class="widthOfTab textPahlavi alignIcon">
-              <span class="tablinks pahlaviTab">𐭯𐭠𐭫𐭮𐭩𐭪</span>
+              <span class="tablinks pahlaviTab">𐭯𐭠𐭫𐭮𐭩𐭪-𐬀𐬬𐬯𐬙𐬁𐬥-Pahlavi</span>
             </td>
           </tr>
         </table>
         <div class="text-input">
           <div id="Latin" class="tabcontent currentTab" dir="ltr">
             <textarea spellcheck="false" id="textarea1" class="from-text" placeholder="(Latin)  
-            This is a sentence in Latin script. It is just an example sentence and this is not transliterated" onkeyup="transliterate()"></textarea>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." onkeyup="transliterate()"></textarea>
           </div>
           <div id="Pahlavi" class="pahlaviTabText" dir="rtl">
             <textarea spellcheck="false" id="textarea2" readonly class="to-text" placeholder="(𐭯𐭠𐭫𐭮𐭩𐭪) 
-            𐭥𐭩𐭠𐭬𐭥 𐭠𐭫𐭤𐭩𐭬 𐭠𐭫 𐭬𐭱𐭤 𐭠𐭤𐭩𐭤 𐭠𐭱𐭥 𐭠𐭤𐭩𐭤 𐭥𐭩𐭠𐭬𐭥 𐭪𐭤 𐭲𐭠𐭬𐭥 𐭫𐭡𐭭𐭩 𐭩𐭱𐭥𐭠𐭫 𐭠𐭤𐭩𐭤 𐭱𐭫𐭧𐭭𐭩 𐭠𐭫𐭩𐭪𐭬" dir="rtl" onkeyup="transliterate()"></textarea>
+        𐭥𐭩𐭠𐭬𐭥 𐭠𐭫𐭤𐭩𐭬 𐭠𐭫 𐭬𐭱𐭤 𐭠𐭤𐭩𐭤 𐭠𐭱𐭥 𐭠𐭤𐭩𐭤 𐭥𐭩𐭠𐭬𐭥 𐭪𐭤 𐭲𐭠𐭬𐭥 𐭫𐭡𐭭𐭩 𐭩𐭱𐭥𐭠𐭫 𐭠𐭤𐭩𐭤 𐭱𐭫𐭧𐭭𐭩 𐭠𐭫𐭩𐭪𐭬
+            
+(𐬀𐬬𐬯𐬙𐬁𐬥)
+        𐬀𐬴𐬆𐬨 𐬬𐬊𐬵𐬏 𐬬𐬀𐬵𐬌𐬱𐬙𐬆𐬨 𐬀𐬯𐬙𐬍
+𐬎𐬱𐬙𐬁 𐬀𐬯𐬙𐬍 𐬎𐬱𐬙𐬁 𐬀𐬵𐬨𐬁𐬌
+𐬵𐬌𐬌𐬀𐬝 𐬀𐬴𐬁𐬌 𐬬𐬀𐬵𐬌𐬱𐬙𐬁𐬌 𐬀𐬴𐬆𐬨" dir="rtl" onkeyup="transliterate()"></textarea>
           </div>
         </div>
         <ul class="controls">
@@ -41,7 +46,7 @@
             <div class="icons tooltip" onmousedown="show1()">
               <i id="from" class="fas fa-copy" onclick="copyContent1()"></i>
               <div id="tooltip1" onmouseout="hide()" class="tooltiptext">
-                <span class="latinCopyText">Copy Transliteration text - 𐭯𐭠𐭫𐭮𐭩𐭪</span>
+                <span class="latinCopyText">Copy Transliteration text - 𐭯𐭠𐭫𐭮𐭩𐭪 / 𐬀𐬬𐬯𐬙𐬁𐬥 or Book Pahlavi</span>
               </div>
             </div>
           </li>
@@ -49,16 +54,21 @@
             <i class="fas fa-exchange-alt" onclick="swapTransliteration()"></i>
           </li-->
           <li class="row to">
+            <div class="middlePersianScripts">
+              <img src="book_pahlavi.jpg" title="Book Pahlavi font" alt="Book Pahlavi font" width="30px" height="30x" onclick="loadBookPahlavi()"/>
+              <img src="inscriptional_pahlavi.jpg" title="Inscriptional Pahlavi" alt="Inscriptional Pahlavi" width="30px" height="30x" onclick="loadInscriptionalPahlavi()"/>
+              <img src="fravahar.png" title="Avestan" alt="Avestan" width="30px" height="30x" onclick="loadAvestan()"/>
+            </div>
             <div class="icons tooltip" onmousedown="show2()">
               <i id="to" class="fas fa-copy" onclick="copyContent2()"></i>
               <div id="tooltip2" onmouseout="hide()" class="tooltiptext">
-                <span class="textPahlavi">Copy 𐭯𐭠𐭫𐭮𐭩𐭪</span>
+                <span class="textPahlavi">Copy 𐭯𐭠𐭫𐭮𐭩𐭪 / 𐬀𐬬𐬯𐬙𐬁𐬥 or Book Pahlavi</span>
               </div>
             </div>
           </li>
         </ul>
       </div>
-      <button onclick="transliterate()"><span class="footerLatin">Latin</span> | <span class="footerPahlavi">𐭯𐭠𐭫𐭮𐭩𐭪</span></button>
+      <button onclick="transliterate()"><span class="footerLatin">Latin</span> | <span class="footerPahlavi">𐭯𐭠𐭫𐭮𐭩𐭪-𐬀𐬬𐬯𐬙𐬁𐬥-Pahlavi</span></button>
     </div>
     
     <div class="footerOfPage">
