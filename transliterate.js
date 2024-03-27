@@ -141,15 +141,15 @@ function copyContent2() {
 */
 
 function loadBookPahlavi() {
-
+  document.getElementById("textarea2").placeholder = "(Pahlavi)\n ywk gwptn YDE PWN pty krtn. OD gywk. HT ycngsnbl YHWWN yt";
 }
 
 function loadInscriptionalPahlavi() {
-
+  document.getElementById("textarea2").placeholder = "(𐭯𐭠𐭫𐭮𐭩𐭪)\n 𐭥𐭩𐭠𐭬𐭥 𐭠𐭫𐭤𐭩𐭬 𐭠𐭫 𐭬𐭱𐭤 𐭠𐭤𐭩𐭤 𐭠𐭱𐭥 𐭠𐭤𐭩𐭤 𐭥𐭩𐭠𐭬𐭥 𐭪𐭤 𐭲𐭠𐭬𐭥 𐭫𐭡𐭭𐭩 𐭩𐭱𐭥𐭠𐭫 𐭠𐭤𐭩𐭤 𐭱𐭫𐭧𐭭𐭩 𐭠𐭫𐭩𐭪𐭬";
 }
 
 function loadAvestan() {
-  
+  document.getElementById("textarea2").placeholder = "(𐬀𐬬𐬯𐬙𐬁𐬥)\n 𐬀𐬴𐬆𐬨 𐬬𐬊𐬵𐬏 𐬬𐬀𐬵𐬌𐬱𐬙𐬆𐬨 𐬀𐬯𐬙𐬍 𐬎𐬱𐬙𐬁 𐬀𐬯𐬙𐬍 𐬎𐬱𐬙𐬁 𐬀𐬵𐬨𐬁𐬌 𐬵𐬌𐬌𐬀𐬝 𐬀𐬴𐬁𐬌 𐬬𐬀𐬵𐬌𐬱𐬙𐬁𐬌 𐬀𐬴𐬆𐬨";
 }
 
 function transliterate() {
