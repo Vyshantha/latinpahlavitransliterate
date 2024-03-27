@@ -144,6 +144,7 @@ function loadBookPahlavi() {
   document.getElementById("textarea2").placeholder = "(Pahlavi)\n ywk gwptn YDE PWN pty krtn. OD gywk. HT ycngsnbl YHWWN yt";
   localStorage.setItem("direction", "latin2bookpahlavi");
   localStorage.setItem("encoding", "Latin");
+  document.getElementById("textarea2").classList.add("bookPahlavi");
   transliterate();
 }
 
@@ -151,6 +152,7 @@ function loadInscriptionalPahlavi() {
   document.getElementById("textarea2").placeholder = "(𐭯𐭠𐭫𐭮𐭩𐭪)\n 𐭥𐭩𐭠𐭬𐭥 𐭠𐭫𐭤𐭩𐭬 𐭠𐭫 𐭬𐭱𐭤 𐭠𐭤𐭩𐭤 𐭠𐭱𐭥 𐭠𐭤𐭩𐭤 𐭥𐭩𐭠𐭬𐭥 𐭪𐭤 𐭲𐭠𐭬𐭥 𐭫𐭡𐭭𐭩 𐭩𐭱𐭥𐭠𐭫 𐭠𐭤𐭩𐭤 𐭱𐭫𐭧𐭭𐭩 𐭠𐭫𐭩𐭪𐭬";
   localStorage.setItem("direction", "latin2pahlavi");
   localStorage.setItem("encoding", "Latin");
+  document.getElementById("textarea2").classList.remove("bookPahlavi");
   transliterate();
 }
 
@@ -158,6 +160,7 @@ function loadAvestan() {
   document.getElementById("textarea2").placeholder = "(𐬀𐬬𐬯𐬙𐬁𐬥)\n 𐬀𐬴𐬆𐬨 𐬬𐬊𐬵𐬏 𐬬𐬀𐬵𐬌𐬱𐬙𐬆𐬨 𐬀𐬯𐬙𐬍 𐬎𐬱𐬙𐬁 𐬀𐬯𐬙𐬍 𐬎𐬱𐬙𐬁 𐬀𐬵𐬨𐬁𐬌 𐬵𐬌𐬌𐬀𐬝 𐬀𐬴𐬁𐬌 𐬬𐬀𐬵𐬌𐬱𐬙𐬁𐬌 𐬀𐬴𐬆𐬨";
   localStorage.setItem("direction", "latin2avestan");
   localStorage.setItem("encoding", "Latin");
+  document.getElementById("textarea2").classList.remove("bookPahlavi");
   transliterate();
 }
 
@@ -194,6 +197,22 @@ function transliterate() {
   } else if (localStorage.getItem("direction") == null || localStorage.getItem("direction") == undefined || localStorage.getItem("direction") == "latin2avestan") {
     let resultAvestan = "";
     let textLa = document.getElementById("textarea1").value;
+
+    const latinToAvestan = { " ": "  ", ".": ".", ",": ",", ";": ";", "?": "?", "!": "!", "\"": "\"", "'": "'", "(": "(", ")": ")", ":": ":", "+": "+", "=": "=", "/": "/", "-": "-", "<": "<", ">": ">", "*": "*", "|": "|", "\\": "\\", "₹": "₹", "{": "{", "}": "}", "[": "[", "]": "]", "_": "_", "%": "%", "@": "@", "ˆ": "ˆ", "`": "`", "´": "´", "·": "·", "˙": "˙", "¯": "¯", "¨": "¨", "˚": "˚", "˝": "˝", "ˇ": "ˇ", "¸": "¸", "˛": "˛", "˘": "˘", "’": "’", "h":"𐬵", "ṣ̌":"𐬴", "š́":"𐬳", "ž":"𐬲", "š":"𐬱", "z":"𐬰", "s":"𐬯", "l":"𐬮", "r":"𐬭", "uu":"𐬎𐬎", "v":"𐬬", "ii":"𐬌𐬌", "y":"𐬫", "ẏ":"𐬪", "m̨":"𐬩", "m":"𐬨", "ṇ":"𐬧", "ń":"𐬦", "n":"𐬥", "ŋᵛ":"𐬤", "ŋ́":"𐬣", "ŋ":"𐬢", "β":"𐬡", "b":"𐬠", "f":"𐬟", "p":"𐬞", "t̰":"𐬝", "δ":"𐬜", "d":"𐬛", "θ":"𐬚", "t":"𐬙", "j":"𐬘", "c":"𐬗", "γ":"𐬖", "ġ":"𐬕", "g":"𐬔", "xᵛ":"𐬓", "x́":"𐬒", "x":"𐬑", "k":"𐬐","ū":"𐬏","u":"𐬎","ī":"𐬍","i":"𐬌","ō":"𐬋","o":"𐬊","ē":"𐬉","e":"𐬈","ə̄":"𐬇","ə":"𐬆","ą̇":"𐬅","ą":"𐬄","ā̊":"𐬃","å":"𐬂","ā":"𐬁","a":"𐬀" };
+
+    for (let u = 0; u < textLa.length; u++) {
+      if (textLa[u].indexOf("\n") > -1) { // New Lines
+        resultAvestan = resultAvestan + "\n";
+      } else if (latinToAvestan[textLa[u]] != undefined && textLa[u+1] != undefined && latinToAvestan[textLa[u]] != null && textLa[u] != "" && textLa[u+1] != "" && textLa[u] == "i") { // Double Single Character
+        resultAvestan = resultAvestan + latinToAvestan["ii"];
+        u = u + 1;
+      } else if (latinToAvestan[textLa[u]] != undefined&& textLa[u+1] != undefined && latinToAvestan[textLa[u]] != null && textLa[u] != "" && textLa[u+1] != "" && textLa[u] == "u") { // Double Single Character
+        resultAvestan = resultAvestan + latinToAvestan["uu"];
+        u = u + 1;
+      } else if (latinToAvestan[textLa[u]] != undefined && latinToAvestan[textLa[u]] != null && textLa[u] != "") { // Default Single Character
+        resultAvestan = resultAvestan + latinToAvestan[textLa[u]];
+      }
+    }
 
     document.getElementById("textarea2").value = resultAvestan;
     document.getElementById("textarea2").innerHTML = resultAvestan;
