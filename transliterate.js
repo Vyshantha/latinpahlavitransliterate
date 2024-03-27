@@ -142,14 +142,20 @@ function copyContent2() {
 
 function loadBookPahlavi() {
   document.getElementById("textarea2").placeholder = "(Pahlavi)\n ywk gwptn YDE PWN pty krtn. OD gywk. HT ycngsnbl YHWWN yt";
+  localStorage.setItem("direction", "latin2bookpahlavi");
+  localStorage.setItem("encoding", "Latin");
 }
 
 function loadInscriptionalPahlavi() {
   document.getElementById("textarea2").placeholder = "(𐭯𐭠𐭫𐭮𐭩𐭪)\n 𐭥𐭩𐭠𐭬𐭥 𐭠𐭫𐭤𐭩𐭬 𐭠𐭫 𐭬𐭱𐭤 𐭠𐭤𐭩𐭤 𐭠𐭱𐭥 𐭠𐭤𐭩𐭤 𐭥𐭩𐭠𐭬𐭥 𐭪𐭤 𐭲𐭠𐭬𐭥 𐭫𐭡𐭭𐭩 𐭩𐭱𐭥𐭠𐭫 𐭠𐭤𐭩𐭤 𐭱𐭫𐭧𐭭𐭩 𐭠𐭫𐭩𐭪𐭬";
+  localStorage.setItem("direction", "latin2pahlavi");
+  localStorage.setItem("encoding", "Latin");
 }
 
 function loadAvestan() {
   document.getElementById("textarea2").placeholder = "(𐬀𐬬𐬯𐬙𐬁𐬥)\n 𐬀𐬴𐬆𐬨 𐬬𐬊𐬵𐬏 𐬬𐬀𐬵𐬌𐬱𐬙𐬆𐬨 𐬀𐬯𐬙𐬍 𐬎𐬱𐬙𐬁 𐬀𐬯𐬙𐬍 𐬎𐬱𐬙𐬁 𐬀𐬵𐬨𐬁𐬌 𐬵𐬌𐬌𐬀𐬝 𐬀𐬴𐬁𐬌 𐬬𐬀𐬵𐬌𐬱𐬙𐬁𐬌 𐬀𐬴𐬆𐬨";
+  localStorage.setItem("direction", "latin2avestan");
+  localStorage.setItem("encoding", "Latin");
 }
 
 function transliterate() {
@@ -176,7 +182,20 @@ function transliterate() {
 
     document.getElementById("textarea2").value = resultPahlavi;
     document.getElementById("textarea2").innerHTML = resultPahlavi;
-  }/* else if (localStorage.getItem("direction") == "pahlavi2latin") {
+  } else if (localStorage.getItem("direction") == null || localStorage.getItem("direction") == undefined || localStorage.getItem("direction") == "latin2bookpahlavi") {
+    let resultBookPahlavi = "";
+    let textLa = document.getElementById("textarea1").value;
+    resultBookPahlavi = textLa;
+    document.getElementById("textarea2").value = resultBookPahlavi;
+    document.getElementById("textarea2").innerHTML = resultBookPahlavi;
+  } else if (localStorage.getItem("direction") == null || localStorage.getItem("direction") == undefined || localStorage.getItem("direction") == "latin2avestan") {
+    let resultAvestan = "";
+    let textLa = document.getElementById("textarea1").value;
+
+    document.getElementById("textarea2").value = resultAvestan;
+    document.getElementById("textarea2").innerHTML = resultAvestan;
+  }
+  /* else if (localStorage.getItem("direction") == "pahlavi2latin") {
     const pahlaviToLatin = { " ": " ", "।": ".", "॥": ".", ",": ",", ";": ";", "?": "?", "!": "!", "\"": "\"", "'": "'", "(": "(", ")": ")", ":": ":", "+": "+", "=": "=", "/": "/", "-": "-", "<": "<", ">": ">", "*": "*", "|": "|", "\\": "\\", "₹": "₹", "{": "{", "}": "}", "[": "[", "]": "]", "_": "_", "%": "%", "@": "@", "ˆ": "ˆ", "`": "`", "´": "´", "˜": "˜", "·": "·", "˙": "˙", "¯": "¯", "¨": "¨", "˚": "˚", "˝": "˝", "ˇ": "ˇ", "¸": "¸", "˛": "˛", "˘": "˘", "’": "’", "𐭲":"t","𐭱":"š","𐭥":"r","𐭬":"q","𐭰":"ṣ","𐭯":"p","𐭮":"s","𐭭":"n","𐭬":"m","𐭫":"l","𐭪":"k","𐭩":"y","𐭨":"ṭ","𐭧":"ḥ","𐭦":"z","𐭥":"w","𐭤":"h","𐭣":"d","𐭢":"g","𐭡":"b","𐭠":"ʾ","𐭿":"1000","𐭾":"100","𐭽":"20","𐭼":"10","𐭻":"4","𐭺":"3","𐭹":"2","𐭸":"1" };
 
     let resultLa = "";
