@@ -62,6 +62,17 @@ function copyContent2() {
   TODO : Latin to Pahlavi (Inscriptional or Book) and at times Avestan (Pāzand writing)
   TODO : Multiple forms of Pahlavi reading
   TODO : Possible Font modification for glyph representation - https://www.unicode.org/L2/L2024/24040-book-pahlavi.pdf 
+  TODO : 𐬎𐬞𐬀𐬯𐬙𐬀𐬎𐬎𐬀𐬐𐬀𐬉𐬥𐬀
+    Four ligatures are commonly used in Avestan manuscripts:
+
+    𐬱 (š) + 𐬀 (a) = 𐬱𐬀 (ša)
+    𐬱 (š) + 𐬗 (c) = 𐬱𐬗 (šc)
+    𐬱 (š) + 𐬙 (t) = 𐬱𐬙 (št)
+    𐬀 (a) + 𐬵 (h) = 𐬀𐬵 (ah)
+
+    U+200C ZERO WIDTH NON-JOINER can be used to prevent ligatures if desired. For example, compare 𐬱𐬀 (U+10B31 10B00) with 𐬱‌𐬀 (U+10B31 200C 10B00).
+
+    Fossey lists 16 ligatures, but most are formed by the interaction of swash tails. 
 */
 
 /* Book Pahlavi "Unicode" encode yet to be "standard" : March 25th, 2024
@@ -157,7 +168,7 @@ function loadInscriptionalPahlavi() {
 }
 
 function loadAvestan() {
-  document.getElementById("textarea2").placeholder = "(𐬀𐬬𐬯𐬙𐬁𐬥)\n 𐬀𐬴𐬆𐬨 𐬬𐬊𐬵𐬏 𐬬𐬀𐬵𐬌𐬱𐬙𐬆𐬨 𐬀𐬯𐬙𐬍 𐬎𐬱𐬙𐬁 𐬀𐬯𐬙𐬍 𐬎𐬱𐬙𐬁 𐬀𐬵𐬨𐬁𐬌 𐬵𐬌𐬌𐬀𐬝 𐬀𐬴𐬁𐬌 𐬬𐬀𐬵𐬌𐬱𐬙𐬁𐬌 𐬀𐬴𐬆𐬨";
+  document.getElementById("textarea2").placeholder = "(𐬎𐬞𐬀𐬯𐬙𐬀𐬎𐬎𐬀𐬐𐬀𐬉𐬥𐬀)\n 𐬀𐬴𐬆𐬨 𐬬𐬊𐬵𐬏 𐬬𐬀𐬵𐬌𐬱𐬙𐬆𐬨 𐬀𐬯𐬙𐬍 𐬎𐬱𐬙𐬁 𐬀𐬯𐬙𐬍 𐬎𐬱𐬙𐬁 𐬀𐬵𐬨𐬁𐬌 𐬵𐬌𐬌𐬀𐬝 𐬀𐬴𐬁𐬌 𐬬𐬀𐬵𐬌𐬱𐬙𐬁𐬌 𐬀𐬴𐬆𐬨";
   localStorage.setItem("direction", "latin2avestan");
   localStorage.setItem("encoding", "Latin");
   document.getElementById("textarea2").classList.remove("bookPahlavi");
@@ -172,8 +183,29 @@ function transliterate() {
     document.getElementById("textarea2").innerHTML = "";
   }
 
+  /*
+    Headline
+
+    The headline appears to write the English word Avestan in Avestan script (without indicating the e, though, and treating the second 'a' like a long ā).
+    We do not know the name of this language. 'Avestan' is a made-up name from the name of the text corpus (the Avesta, Middle Persian abestāg). Following the evidence of the Old Persian inscriptions, the people who spoke Avestan would have probably referred to their language as Aryan without indicating the dialectal differences to other Aryan dialects.
+    It might be better simply to write Avestan, Pārsīg, Pahlavi (what is Pārsīg meant to represent?).
+  */
+
   if (localStorage.getItem("direction") == null || localStorage.getItem("direction") == undefined || localStorage.getItem("direction") == "latin2pahlavi") {
-    const latinToPahlavi = { " ": "  ", ".": ".", ",": ",", ";": ";", "?": "?", "!": "!", "\"": "\"", "'": "'", "(": "(", ")": ")", ":": ":", "+": "+", "=": "=", "/": "/", "-": "-", "<": "<", ">": ">", "*": "*", "|": "|", "\\": "\\", "₹": "₹", "{": "{", "}": "}", "[": "[", "]": "]", "_": "_", "%": "%", "@": "@", "ˆ": "ˆ", "`": "`", "´": "´", "·": "·", "˙": "˙", "¯": "¯", "¨": "¨", "˚": "˚", "˝": "˝", "ˇ": "ˇ", "¸": "¸", "˛": "˛", "˘": "˘", "’": "’", "t":"𐭲","š":"𐭱","q":"𐭬","r":"𐭥","c":"𐭰","ṣ":"𐭰","p":"𐭯","s":"𐭮","n":"𐭭","m":"𐭬","l":"𐭫","k":"𐭪","y":"𐭩","ṭ":"𐭨","ḥ":"𐭧","z":"𐭦","w":"𐭥","h":"𐭤","d":"𐭣","g":"𐭢","b":"𐭡","ʾ":"𐭠","1000":"𐭿","100":"𐭾","20":"𐭽","10":"𐭼","4":"𐭻","3":"𐭺","2":"𐭹","1":"𐭸" };
+    /*
+      not displayed
+      apparently all capital letters (those are used to indicate Aramaeograms and should be treated like minuscules)
+      aleph (ʾ) 
+      the wordend marker ˈ (however, I am not sure how that looks like in the inscriptions. In the psalterm, it is a special form of y, in Pahlavi it is identical to w/n/r/ʿ). Is this Latin transcription true inscriptional MP?
+
+      strangely displayed
+      Brackets [...] result in a kind of Pahlavi ln combination. They appear in transcription to display illegible remnants of letters or loss of text that could be restituted. So they should appear in the "original" script, or, if that is meant to represent the original, [...] with content should be omitted with a placeholder, e.g., empty space, instead. This is a general decision that should be done by the principle investigators.
+
+      I would have to check whether t is really written that low (like n) or whether it is normally on the line.
+      Does this information come with the font or do you define that?
+    */
+    // TODO ":"" ?
+    const latinToPahlavi = { " ": "  ", ".": ".", ",": ",", ";": ";", "?": "?", "!": "!", "\"": "\"", "'": "'", "(": "(", ")": ")", ":": ":", "+": "+", "=": "=", "/": "/", "-": "-", "<": "<", ">": ">", "*": "*", "|": "|", "\\": "\\", "₹": "₹", "{": "{", "}": "}", "[": "[", "]": "]", "_": "_", "%": "%", "@": "@", "ˆ": "ˆ", "`": "`", "´": "´", "·": "·", "˙": "˙", "¯": "¯", "¨": "¨", "˚": "˚", "˝": "˝", "ˇ": "ˇ", "¸": "¸", "˛": "˛", "˘": "˘", "’": "’", "t":"𐭲","š":"𐭱","q":"𐭬","r":"𐭥","c":"𐭰","ṣ":"𐭰","p":"𐭯","s":"𐭮","n":"𐭭","m":"𐭬","l":"𐭫","k":"𐭪","y":"𐭩","ṭ":"𐭨","ḥ":"𐭧","z":"𐭦","w":"𐭥","h":"𐭤","d":"𐭣","g":"𐭢","b":"𐭡","ʾ":"𐭠","1000":"𐭿","100":"𐭾","20":"𐭽","10":"𐭼","4":"𐭻","3":"𐭺","2":"𐭹","1":"𐭸", "ˈ":"", "[...]":"" };
 
     let resultPahlavi = "";
     let textLa = document.getElementById("textarea1").value;
@@ -189,16 +221,54 @@ function transliterate() {
     document.getElementById("textarea2").value = resultPahlavi;
     document.getElementById("textarea2").innerHTML = resultPahlavi;
   } else if (localStorage.getItem("direction") == null || localStorage.getItem("direction") == undefined || localStorage.getItem("direction") == "latin2bookpahlavi") {
+    /*
+      The script runs left-to-right, but must be displayed right-to-left (like inscriptional MP or Avestan).
+      Capital N of PWN and of YHWNNt is displayed like the letter Ḥ (in other transcription conventions E).
+      Capital H of YHWWNt is displayed like the letter š.
+
+      Apart from that, several letters show the variant that is connected to the right (although they are not).
+      Letters minuscule L is correctly displayed, but r is displayed like L with a hook. This confusion is understandable, because (brace yourself)
+
+          The LETTER r is written like the letters w, n, ʿ and the wordendmarker ˈ. It represents the SOUND r.
+          The LETTER l represents the SOUND r as well (it is in fact the common letter for this sound). If, however, it is meant to represent the SOUND l (which rarely appears in Middle Persian), it is sometimes marked with a hook.
+
+      The word pusar "son" is written pwsl or BRḤl (Aramaeogram + Persian l).
+    */
+    // TODO - right2left
+    // Word End Marker ˈ
     let resultBookPahlavi = "";
     let textLa = document.getElementById("textarea1").value;
     resultBookPahlavi = textLa;
     document.getElementById("textarea2").value = resultBookPahlavi;
     document.getElementById("textarea2").innerHTML = resultBookPahlavi;
   } else if (localStorage.getItem("direction") == null || localStorage.getItem("direction") == undefined || localStorage.getItem("direction") == "latin2avestan") {
+    /*
+      (note that on my keyboard 'ǝ' has the wrong unicode as it is Latin turned e instead of shwa, this will be corrected)
+      not displayed
+      ē in rastuiiē
+      b in humatōibiiascā etc.
+      ϑ in mąϑβōibiiascā, diiϑǝ̄ etc.
+
+      wrongly displayed
+      m like u in humatōibiiascā
+      ϑ like i in daiϑī (note that ϑ is omitted in mąϑβōibiiascā)
+      t like ii in paitirǝcā
+      ǝ̄ is displayed like simple ǝ 
+      š like u in dušmatācā
+      ž like u in dužīxtācā and dužuuarǝštācā
+
+      strangely displayed
+      δ in vaxǝδβōibiiascā is correct in shape but it is moved up. It covers normally the same space as ǝ or ī (middle and lower part of a line)
+
+      Why is there a crossed box in the transcription field?
+      (PS: consider to name this field "Latin transcription" or the like.)
+
+      Nice that you observe the ligature of št :slightly_smiling_face:
+    */
+    // TODO ":"" ?
     let resultAvestan = "";
     let textLa = document.getElementById("textarea1").value;
-
-    const latinToAvestan = { " ": "  ", ".": ".", ",": ",", ";": ";", "?": "?", "!": "!", "\"": "\"", "'": "'", "(": "(", ")": ")", ":": ":", "+": "+", "=": "=", "/": "/", "-": "-", "<": "<", ">": ">", "*": "*", "|": "|", "\\": "\\", "₹": "₹", "{": "{", "}": "}", "[": "[", "]": "]", "_": "_", "%": "%", "@": "@", "ˆ": "ˆ", "`": "`", "´": "´", "·": "·", "˙": "˙", "¯": "¯", "¨": "¨", "˚": "˚", "˝": "˝", "ˇ": "ˇ", "¸": "¸", "˛": "˛", "˘": "˘", "’": "’", "h":"𐬵", "ṣ̌":"𐬴", "š́":"𐬳", "ž":"𐬲", "š":"𐬱", "z":"𐬰", "s":"𐬯", "l":"𐬮", "r":"𐬭", "uu":"𐬎𐬎", "v":"𐬬", "ii":"𐬌𐬌", "y":"𐬫", "ẏ":"𐬪", "m̨":"𐬩", "m":"𐬨", "ṇ":"𐬧", "ń":"𐬦", "n":"𐬥", "ŋᵛ":"𐬤", "ŋ́":"𐬣", "ŋ":"𐬢", "β":"𐬡", "b":"𐬠", "f":"𐬟", "p":"𐬞", "t̰":"𐬝", "δ":"𐬜", "d":"𐬛", "θ":"𐬚", "t":"𐬙", "j":"𐬘", "c":"𐬗", "γ":"𐬖", "ġ":"𐬕", "g":"𐬔", "xᵛ":"𐬓", "x́":"𐬒", "x":"𐬑", "k":"𐬐","ū":"𐬏","u":"𐬎","ī":"𐬍","i":"𐬌","ō":"𐬋","o":"𐬊","ē":"𐬉","e":"𐬈","ə̄":"𐬇","ə":"𐬆","ą̇":"𐬅","ą":"𐬄","ā̊":"𐬃","å":"𐬂","ā":"𐬁","a":"𐬀" };
+    const latinToAvestan = { " ": "  ", ".": ".", ",": ",", ";": ";", "?": "?", "!": "!", "\"": "\"", "'": "'", "(": "(", ")": ")", ":": ":", "+": "+", "=": "=", "/": "/", "-": "-", "<": "<", ">": ">", "*": "*", "|": "|", "\\": "\\", "₹": "₹", "{": "{", "}": "}", "[": "[", "]": "]", "_": "_", "%": "%", "@": "@", "ˆ": "ˆ", "`": "`", "´": "´", "·": "·", "˙": "˙", "¯": "¯", "¨": "¨", "˚": "˚", "˝": "˝", "ˇ": "ˇ", "¸": "¸", "˛": "˛", "˘": "˘", "’": "’", "h":"𐬵", "ṣ̌":"𐬴", "š́":"𐬳", "ž":"𐬲", "š":"𐬱", "z":"𐬰", "s":"𐬯", "l":"𐬮", "r":"𐬭", "uu":"𐬎𐬎", "v":"𐬬", "ii":"𐬌𐬌", "y":"𐬫", "ẏ":"𐬪", "m̨":"𐬩", "m":"𐬨", "ṇ":"𐬧", "ń":"𐬦", "n":"𐬥", "ŋᵛ":"𐬤", "ŋ́":"𐬣", "ŋ":"𐬢", "β":"𐬡", "b":"𐬠", "f":"𐬟", "p":"𐬞", "t̰":"𐬝", "δ":"𐬜", "d":"𐬛", "ϑ":"", "θ":"𐬚", "t":"𐬙", "j":"𐬘", "c":"𐬗", "γ":"𐬖", "ġ":"𐬕", "g":"𐬔", "xᵛ":"𐬓", "x́":"𐬒", "x":"𐬑", "k":"𐬐","ū":"𐬏","u":"𐬎","ī":"𐬍","i":"𐬌","ō":"𐬋","o":"𐬊","ǝ":"", "ǝ̄":"", "ē":"𐬉","e":"𐬈","ə̄":"𐬇","ə":"𐬆","ą̇":"𐬅","ą":"𐬄","ā̊":"𐬃","å":"𐬂","ā":"𐬁","a":"𐬀" };
 
     for (let u = 0; u < textLa.length; u++) {
       if (textLa[u].indexOf("\n") > -1) { // New Lines
