@@ -173,11 +173,7 @@ function transliterate() {
   }
 
   /*
-    Headline
-
-    The headline appears to write the English word Avestan in Avestan script (without indicating the e, though, and treating the second 'a' like a long ā).
-    We do not know the name of this language. 'Avestan' is a made-up name from the name of the text corpus (the Avesta, Middle Persian abestāg). Following the evidence of the Old Persian inscriptions, the people who spoke Avestan would have probably referred to their language as Aryan without indicating the dialectal differences to other Aryan dialects.
-    It might be better simply to write Avestan, Pārsīg, Pahlavi (what is Pārsīg meant to represent?).
+    Headline : Avestan, Pārsīg, Pahlavi
   */
 
   if (localStorage.getItem("direction") == null || localStorage.getItem("direction") == undefined || localStorage.getItem("direction") == "latin2pahlavi") {
@@ -223,11 +219,10 @@ function transliterate() {
 
       The word pusar "son" is written pwsl or BRḤl (Aramaeogram + Persian l).
     */
-    // TODO - right2left
     // Word End Marker ˈ
     let resultBookPahlavi = "";
     let textLa = document.getElementById("textarea1").value;
-    resultBookPahlavi = textLa;
+    resultBookPahlavi = textLa.split("").reverse().join("");
     document.getElementById("textarea2").value = resultBookPahlavi;
     document.getElementById("textarea2").innerHTML = resultBookPahlavi;
   } else if (localStorage.getItem("direction") == null || localStorage.getItem("direction") == undefined || localStorage.getItem("direction") == "latin2avestan") {
