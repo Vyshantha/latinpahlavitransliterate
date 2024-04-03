@@ -222,7 +222,10 @@ function transliterate() {
     // Word End Marker ˈ
     let resultBookPahlavi = "";
     let textLa = document.getElementById("textarea1").value;
-    resultBookPahlavi = textLa.split("").reverse().join("");
+    let lines = textLa.split("\n");
+    for (let i = 0; i < lines.length; i++) {
+      resultBookPahlavi = resultBookPahlavi + lines[i].split("").reverse().join("") + "\n";
+    }
     document.getElementById("textarea2").value = resultBookPahlavi;
     document.getElementById("textarea2").innerHTML = resultBookPahlavi;
   } else if (localStorage.getItem("direction") == null || localStorage.getItem("direction") == undefined || localStorage.getItem("direction") == "latin2avestan") {
