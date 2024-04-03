@@ -62,17 +62,6 @@ function copyContent2() {
   TODO : Latin to Pahlavi (Inscriptional or Book) and at times Avestan (Pāzand writing)
   TODO : Multiple forms of Pahlavi reading
   TODO : Possible Font modification for glyph representation - https://www.unicode.org/L2/L2024/24040-book-pahlavi.pdf 
-  TODO : 
-    Four ligatures are commonly used in Avestan manuscripts:
-
-    𐬱 (š) + 𐬀 (a) = 𐬱𐬀 (ša)
-    𐬱 (š) + 𐬗 (c) = 𐬱𐬗 (šc)
-    𐬱 (š) + 𐬙 (t) = 𐬱𐬙 (št)
-    𐬀 (a) + 𐬵 (h) = 𐬀𐬵 (ah)
-
-    U+200C ZERO WIDTH NON-JOINER can be used to prevent ligatures if desired. For example, compare 𐬱𐬀 (U+10B31 10B00) with 𐬱‌𐬀 (U+10B31 200C 10B00).
-
-    Fossey lists 16 ligatures, but most are formed by the interaction of swash tails. 
 */
 
 /* Book Pahlavi "Unicode" encode yet to be "standard" : March 25th, 2024
@@ -262,22 +251,32 @@ function transliterate() {
 
       Why is there a crossed box in the transcription field?
       (PS: consider to name this field "Latin transcription" or the like.)
-
-      Nice that you observe the ligature of št :slightly_smiling_face:
     */
     // TODO 2 vareity for h , ń , t̰ , δ , ą̇
     let resultAvestan = "";
     let textLa = document.getElementById("textarea1").value;
-    const latinToAvestan = { " ": "  ", ".": ".", ",": ",", ";": ";", "?": "?", "!": "!", "\"": "\"", "'": "'", "(": "(", ")": ")", ":": ":", "+": "+", "=": "=", "/": "/", "-": "-", "<": "<", ">": ">", "*": "*", "|": "|", "\\": "\\", "₹": "₹", "{": "{", "}": "}", "[": "[", "]": "]", "_": "_", "%": "%", "@": "@", "ˆ": "ˆ", "`": "`", "´": "´", "·": "·", "˙": "˙", "¯": "¯", "¨": "¨", "˚": "˚", "˝": "˝", "ˇ": "ˇ", "¸": "¸", "˛": "˛", "˘": "˘", "’": "’", "h":"𐬵", "ṣ̌":"𐬴", "š́":"𐬳", "ž":"𐬲", "š":"𐬱", "z":"𐬰", "s":"𐬯", "l":"𐬮", "r":"𐬭", "uu":"𐬎𐬎", "v":"𐬬", "ii":"𐬌𐬌", "ẏ":"𐬫", "y":"𐬪", "m̨":"𐬩", "m":"𐬨", "ṇ":"𐬧", "ń":"𐬦", "n":"𐬥", "ŋᵛ":"𐬤", "ŋ́":"𐬣", "ŋ":"𐬢", "β":"𐬡", "b":"𐬠", "f":"𐬟", "p":"𐬞", "t̰":"𐬝", "δ":"𐬜", "d":"𐬛", "ϑ":"𐬚", "θ":"𐬚", "t":"𐬙", "j":"𐬘", "c":"𐬗", "γ":"𐬖", "ġ":"𐬕", "g":"𐬔", "xᵛ":"𐬓", "x́":"𐬒", "x":"𐬑", "k":"𐬐","ū":"𐬏","u":"𐬎","ī":"𐬍","i":"𐬌","ō":"𐬋","o":"𐬊","ē":"𐬉","e":"𐬈","ǝ̄":"𐬇","ǝ":"𐬆","ə̄":"𐬇","ə":"𐬆","ą̇":"𐬅","ą":"𐬄","ā̊":"𐬃","å":"𐬂","ā":"𐬁","a":"𐬀" };
+    const latinToAvestan = { " ": "⸱", ".": "𐬼", ",": ",", ":": "𐬺", ";": "𐬻", "":"𐬹", "":"𐬽" , "":".", "":"𐬾", "":"𐬿", "?": "?", "!": "!", "\"": "\"", "'": "'", "(": "(", ")": ")", "+": "+", "=": "=", "/": "/", "-": "-", "<": "<", ">": ">", "*": "*", "|": "|", "\\": "\\", "₹": "₹", "{": "{", "}": "}", "[": "[", "]": "]", "_": "_", "%": "%", "@": "@", "ˆ": "ˆ", "`": "`", "´": "´", "·": "·", "˙": "˙", "¯": "¯", "¨": "¨", "˚": "˚", "˝": "˝", "ˇ": "ˇ", "¸": "¸", "˛": "˛", "˘": "˘", "’": "’", "h":"𐬵", "ṣ̌":"𐬴", "š́":"𐬳", "ž":"𐬲", "š":"𐬱", "z":"𐬰", "s":"𐬯", "l":"𐬮", "r":"𐬭", "uu":"𐬎𐬎", "v":"𐬬", "ii":"𐬌𐬌", "ẏ":"𐬫", "y":"𐬪", "m̨":"𐬩", "m":"𐬨", "ṇ":"𐬧", "ń":"𐬦", "n":"𐬥", "ŋᵛ":"𐬤", "ŋ́":"𐬣", "ŋ":"𐬢", "β":"𐬡", "b":"𐬠", "f":"𐬟", "p":"𐬞", "t̰":"𐬝", "δ":"𐬜", "d":"𐬛", "ϑ":"𐬚", "θ":"𐬚", "t":"𐬙", "j":"𐬘", "c":"𐬗", "γ":"𐬖", "ġ":"𐬕", "g":"𐬔", "xᵛ":"𐬓", "x́":"𐬒", "x":"𐬑", "k":"𐬐","ū":"𐬏","u":"𐬎","ī":"𐬍","i":"𐬌","ō":"𐬋","o":"𐬊","ē":"𐬉","e":"𐬈","ǝ̄":"𐬇","ǝ":"𐬆","ə̄":"𐬇","ə":"𐬆","ą̇":"𐬅","ą":"𐬄","ā̊":"𐬃","å":"𐬂","ā":"𐬁","a":"𐬀" };
 
     for (let u = 0; u < textLa.length; u++) {
       if (textLa[u].indexOf("\n") > -1) { // New Lines
         resultAvestan = resultAvestan + "\n";
-      } else if (latinToAvestan[textLa[u]] != undefined && textLa[u+1] != undefined && latinToAvestan[textLa[u]] != null && textLa[u] != "" && textLa[u+1] != "" && textLa[u] == "i") { // Double Single Character
+      } else if (latinToAvestan[textLa[u]] != undefined && textLa[u+1] != undefined && latinToAvestan[textLa[u]] != null && textLa[u] != "" && textLa[u+1] != "" && textLa[u] == "i" && textLa[u+1] == "i") { // Double Single Character
         resultAvestan = resultAvestan + latinToAvestan["ii"];
         u = u + 1;
-      } else if (latinToAvestan[textLa[u]] != undefined&& textLa[u+1] != undefined && latinToAvestan[textLa[u]] != null && textLa[u] != "" && textLa[u+1] != "" && textLa[u] == "u") { // Double Single Character
+      } else if (latinToAvestan[textLa[u]] != undefined && textLa[u+1] != undefined && latinToAvestan[textLa[u]] != null && textLa[u] != "" && textLa[u+1] != "" && textLa[u] == "u" && textLa[u+1] == "u") { // Double Single Character
         resultAvestan = resultAvestan + latinToAvestan["uu"];
+        u = u + 1;
+      } else if (latinToAvestan[textLa[u]] != undefined && textLa[u+1] != undefined && latinToAvestan[textLa[u]] != null && textLa[u] != "" && textLa[u+1] != "" && textLa[u] == "š" && textLa[u+1] == "a") { // Ligature 𐬱 (š) + 𐬀 (a) = 𐬱𐬀 (ša)
+        resultAvestan = resultAvestan.slice(0, -1) + "𐬱𐬀";
+        u = u + 1;
+      } else if (latinToAvestan[textLa[u]] != undefined && textLa[u+1] != undefined && latinToAvestan[textLa[u]] != null && textLa[u] != "" && textLa[u+1] != "" && textLa[u] == "š" && textLa[u+1] == "c") { // Ligature 𐬱 (š) + 𐬗 (c) = 𐬱𐬗 (šc)
+        resultAvestan = resultAvestan.slice(0, -1) + "𐬱𐬗";
+        u = u + 1;
+      } else if (latinToAvestan[textLa[u]] != undefined && textLa[u+1] != undefined && latinToAvestan[textLa[u]] != null && textLa[u] != "" && textLa[u+1] != "" && textLa[u] == "š" && textLa[u+1] == "t") { // Ligature 𐬱 (š) + 𐬙 (t) = 𐬱𐬙 (št)
+        resultAvestan = resultAvestan.slice(0, -1) + "𐬱𐬙";
+        u = u + 1;
+      } else if (latinToAvestan[textLa[u]] != undefined && textLa[u+1] != undefined && latinToAvestan[textLa[u]] != null && textLa[u] != "" && textLa[u+1] != "" && textLa[u] == "a" && textLa[u+1] == "h") { // Ligature 𐬀 (a) + 𐬵 (h) = 𐬀𐬵 (ah)
+        resultAvestan = resultAvestan.slice(0, -1) + "𐬀𐬵";
         u = u + 1;
       } else if (latinToAvestan[textLa[u]] != undefined && latinToAvestan[textLa[u]] != null && textLa[u] != "") { // Default Single Character
         resultAvestan = resultAvestan + latinToAvestan[textLa[u]];
