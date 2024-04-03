@@ -231,27 +231,6 @@ function transliterate() {
     document.getElementById("textarea2").value = resultBookPahlavi;
     document.getElementById("textarea2").innerHTML = resultBookPahlavi;
   } else if (localStorage.getItem("direction") == null || localStorage.getItem("direction") == undefined || localStorage.getItem("direction") == "latin2avestan") {
-    /*
-      (note that on my keyboard 'ǝ' has the wrong unicode as it is Latin turned e instead of shwa, this will be corrected)
-      not displayed
-      ē in rastuiiē
-      b in humatōibiiascā etc.
-      ϑ in mąϑβōibiiascā, diiϑǝ̄ etc.
-
-      wrongly displayed
-      m like u in humatōibiiascā
-      ϑ like i in daiϑī (note that ϑ is omitted in mąϑβōibiiascā)
-      t like ii in paitirǝcā
-      ǝ̄ is displayed like simple ǝ 
-      š like u in dušmatācā
-      ž like u in dužīxtācā and dužuuarǝštācā
-
-      strangely displayed
-      δ in vaxǝδβōibiiascā is correct in shape but it is moved up. It covers normally the same space as ǝ or ī (middle and lower part of a line)
-
-      Why is there a crossed box in the transcription field?
-      (PS: consider to name this field "Latin transcription" or the like.)
-    */
     // TODO 2 vareity for h , ń , t̰ , δ , ą̇
     let resultAvestan = "";
     let textLa = document.getElementById("textarea1").value;
@@ -266,17 +245,50 @@ function transliterate() {
       } else if (latinToAvestan[textLa[u]] != undefined && textLa[u+1] != undefined && latinToAvestan[textLa[u]] != null && textLa[u] != "" && textLa[u+1] != "" && textLa[u] == "u" && textLa[u+1] == "u") { // Double Single Character
         resultAvestan = resultAvestan + latinToAvestan["uu"];
         u = u + 1;
-      } else if (latinToAvestan[textLa[u]] != undefined && textLa[u+1] != undefined && latinToAvestan[textLa[u]] != null && textLa[u] != "" && textLa[u+1] != "" && textLa[u] == "š" && textLa[u+1] == "a") { // Ligature 𐬱 (š) + 𐬀 (a) = 𐬱𐬀 (ša)
-        resultAvestan = resultAvestan.slice(0, -1) + "𐬱𐬀";
-        u = u + 1;
-      } else if (latinToAvestan[textLa[u]] != undefined && textLa[u+1] != undefined && latinToAvestan[textLa[u]] != null && textLa[u] != "" && textLa[u+1] != "" && textLa[u] == "š" && textLa[u+1] == "c") { // Ligature 𐬱 (š) + 𐬗 (c) = 𐬱𐬗 (šc)
-        resultAvestan = resultAvestan.slice(0, -1) + "𐬱𐬗";
-        u = u + 1;
-      } else if (latinToAvestan[textLa[u]] != undefined && textLa[u+1] != undefined && latinToAvestan[textLa[u]] != null && textLa[u] != "" && textLa[u+1] != "" && textLa[u] == "š" && textLa[u+1] == "t") { // Ligature 𐬱 (š) + 𐬙 (t) = 𐬱𐬙 (št)
-        resultAvestan = resultAvestan.slice(0, -1) + "𐬱𐬙";
-        u = u + 1;
       } else if (latinToAvestan[textLa[u]] != undefined && textLa[u+1] != undefined && latinToAvestan[textLa[u]] != null && textLa[u] != "" && textLa[u+1] != "" && textLa[u] == "a" && textLa[u+1] == "h") { // Ligature 𐬀 (a) + 𐬵 (h) = 𐬀𐬵 (ah)
-        resultAvestan = resultAvestan.slice(0, -1) + "𐬀𐬵";
+        resultAvestan = resultAvestan + "𐬀𐬵";
+        u = u + 1;
+      } else if(latinToAvestan[textLa[u] + textLa[u+1]] != undefined && latinToAvestan[textLa[u]] != null && latinToAvestan[textLa[u+1]] != null && textLa[u+1] != "" && textLa[u] == "å" && textLa[u+1] == "\u030A") { // case ā̊
+        resultAvestan = resultAvestan + "𐬃";
+        u = u + 1;
+      } else if(latinToAvestan[textLa[u] + textLa[u+1]] != undefined && latinToAvestan[textLa[u]] != null && latinToAvestan[textLa[u+1]] != null && textLa[u+1] != "" && textLa[u] == "ą" && textLa[u+1] == "\u0307") { // case ą̇
+        resultAvestan = resultAvestan + "𐬅";
+        u = u + 1;
+      } else if(latinToAvestan[textLa[u] + textLa[u+1]] != undefined && latinToAvestan[textLa[u]] != null && latinToAvestan[textLa[u+1]] != null && textLa[u+1] != "" && (textLa[u] == "ǝ" || textLa[u] == "ə") && textLa[u+1] == "\u0304") { // case ǝ̄ ə̄
+        resultAvestan = resultAvestan + "𐬇";
+        u = u + 1;
+      } else if(latinToAvestan[textLa[u] + textLa[u+1]] != undefined && latinToAvestan[textLa[u]] != null && latinToAvestan[textLa[u+1]] != null && textLa[u+1] != "" && textLa[u] == "x" && textLa[u+1] == "\u0301") { // case x́
+        resultAvestan = resultAvestan + "𐬒";
+        u = u + 1;
+      } else if(latinToAvestan[textLa[u] + textLa[u+1]] != undefined && latinToAvestan[textLa[u]] != null && latinToAvestan[textLa[u+1]] != null && textLa[u+1] != "" && textLa[u] == "x" && textLa[u+1] == "\u1D5B") { // case xᵛ
+        resultAvestan = resultAvestan + "𐬓";
+        u = u + 1;
+      } else if(latinToAvestan[textLa[u] + textLa[u+1]] != undefined && latinToAvestan[textLa[u]] != null && latinToAvestan[textLa[u+1]] != null && textLa[u+1] != "" && textLa[u] == "t" && textLa[u+1] == "\u0330") { // case t̰
+        resultAvestan = resultAvestan + "𐬝";
+        u = u + 1;
+      } else if(latinToAvestan[textLa[u] + textLa[u+1]] != undefined && latinToAvestan[textLa[u]] != null && latinToAvestan[textLa[u+1]] != null && textLa[u+1] != "" && textLa[u] == "ŋ" && textLa[u+1] == "\u0301") { // case ŋ́
+        resultAvestan = resultAvestan + "𐬣";
+        u = u + 1;
+      } else if(latinToAvestan[textLa[u] + textLa[u+1]] != undefined && latinToAvestan[textLa[u]] != null && latinToAvestan[textLa[u+1]] != null && textLa[u+1] != "" && textLa[u] == "ŋ" && textLa[u+1] == "\u1D5B") { // case ŋᵛ
+        resultAvestan = resultAvestan + "𐬤";
+        u = u + 1;
+      } else if(latinToAvestan[textLa[u] + textLa[u+1]] != undefined && latinToAvestan[textLa[u]] != null && latinToAvestan[textLa[u+1]] != null && textLa[u+1] != "" && textLa[u] == "m" && textLa[u+1] == "\u0328") { // case m̨
+        resultAvestan = resultAvestan + "𐬩";
+        u = u + 1;
+      } else if(latinToAvestan[textLa[u] + textLa[u+1]] != undefined && latinToAvestan[textLa[u]] != null && latinToAvestan[textLa[u+1]] != null && textLa[u+1] != "" && textLa[u] == "š" && textLa[u+1] == "\u0301") { // case š́
+        resultAvestan = resultAvestan + "𐬳";
+        u = u + 1;
+      } else if (latinToAvestan[textLa[u]] != undefined && textLa[u+1] != undefined && latinToAvestan[textLa[u]] != null && latinToAvestan[textLa[u+1]] != null && textLa[u] != "" && textLa[u+1] != "" && textLa[u] == "š" && textLa[u+1] == "a") { // Ligature 𐬱 (š) + 𐬀 (a) = 𐬱𐬀 (ša)
+        resultAvestan = resultAvestan + "𐬱𐬀";
+        u = u + 1;
+      } else if (latinToAvestan[textLa[u]] != undefined && textLa[u+1] != undefined && latinToAvestan[textLa[u]] != null && latinToAvestan[textLa[u+1]] != null && textLa[u] != "" && textLa[u+1] != "" && textLa[u] == "š" && textLa[u+1] == "c") { // Ligature 𐬱 (š) + 𐬗 (c) = 𐬱𐬗 (šc)
+        resultAvestan = resultAvestan + "𐬱𐬗";
+        u = u + 1;
+      } else if (latinToAvestan[textLa[u]] != undefined && textLa[u+1] != undefined && latinToAvestan[textLa[u]] != null && latinToAvestan[textLa[u+1]] != null && textLa[u] != "" && textLa[u+1] != "" && textLa[u] == "š" && textLa[u+1] == "t") { // Ligature 𐬱 (š) + 𐬙 (t) = 𐬱𐬙 (št)
+        resultAvestan = resultAvestan + "𐬱𐬙";
+        u = u + 1;
+      } else if(latinToAvestan[textLa[u] + textLa[u+1]] != undefined && latinToAvestan[textLa[u]] != null && latinToAvestan[textLa[u+1]] != null && textLa[u+1] != "" && textLa[u] == "ṣ" && textLa[u+1] == "\u030C") { // case ṣ̌
+        resultAvestan = resultAvestan + "𐬴";
         u = u + 1;
       } else if (latinToAvestan[textLa[u]] != undefined && latinToAvestan[textLa[u]] != null && textLa[u] != "") { // Default Single Character
         resultAvestan = resultAvestan + latinToAvestan[textLa[u]];
