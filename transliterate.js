@@ -141,7 +141,7 @@ function copyContent2() {
 */
 
 function loadBookPahlavi() {
-  document.getElementById("textarea2").placeholder = "(Pahlavi)\n ywk gwptn YDE PWN pty krtn. OD gywk. HT ycngsnbl YHWWN yt";
+  document.getElementById("textarea2").placeholder = "(Pahlavi)\n ywk gwptn YDE PWN pty krtn. OD gywk. \nHT ycngsnbl YHWWN yt";
   localStorage.setItem("direction", "latin2bookpahlavi");
   localStorage.setItem("encoding", "Latin");
   document.getElementById("textarea2").classList.add("bookPahlavi");
@@ -193,7 +193,7 @@ function transliterate() {
     const latinToPahlavi = { " ": "  ", ".": ".", ",": ",", ";": ";", "?": "?", "!": "!", "\"": "\"", "'": "'", "(": "(", ")": ")", ":": ":", "+": "+", "=": "=", "/": "/", "-": "-", "<": "<", ">": ">", "*": "*", "|": "|", "\\": "\\", "₹": "₹", "{": "{", "}": "}", "[": "[", "]": "]", "_": "_", "%": "%", "@": "@", "ˆ": "ˆ", "`": "`", "´": "´", "·": "·", "˙": "˙", "¯": "¯", "¨": "¨", "˚": "˚", "˝": "˝", "ˇ": "ˇ", "¸": "¸", "˛": "˛", "˘": "˘", "’": "’", "t":"𐭲","š":"𐭱","q":"𐭬","r":"𐭥","c":"𐭰","ṣ":"𐭰","p":"𐭯","s":"𐭮","n":"𐭭","m":"𐭬","l":"𐭫","k":"𐭪","y":"𐭩","ṭ":"𐭨","ḥ":"𐭧","z":"𐭦","w":"𐭥","h":"𐭤","d":"𐭣","g":"𐭢","b":"𐭡","ʾ":"𐭠","1000":"𐭿","100":"𐭾","20":"𐭽","10":"𐭼","4":"𐭻","3":"𐭺","2":"𐭹","1":"𐭸", "ˈ":"", "[...]":"" };
 
     let resultPahlavi = "";
-    let textLa = document.getElementById("textarea1").value;
+    let textLa = document.getElementById("textarea1").value.toLowerCase();
 
     for (let u = 0; u < textLa.length; u++) {
       if (textLa[u].indexOf("\n") > -1) { // New Lines
@@ -207,7 +207,6 @@ function transliterate() {
     document.getElementById("textarea2").innerHTML = resultPahlavi;
   } else if (localStorage.getItem("direction") == null || localStorage.getItem("direction") == undefined || localStorage.getItem("direction") == "latin2bookpahlavi") {
     /*
-      The script runs left-to-right, but must be displayed right-to-left (like inscriptional MP or Avestan).
       Capital N of PWN and of YHWNNt is displayed like the letter Ḥ (in other transcription conventions E).
       Capital H of YHWWNt is displayed like the letter š.
 
@@ -221,7 +220,7 @@ function transliterate() {
     */
     // Word End Marker ˈ
     let resultBookPahlavi = "";
-    let textLa = document.getElementById("textarea1").value;
+    let textLa = (document.getElementById("textarea1").value != "") ? document.getElementById("textarea1").value : document.getElementById("textarea2").placeholder;
     let lines = textLa.split("\n");
     for (let i = 0; i < lines.length; i++) {
       resultBookPahlavi = resultBookPahlavi + lines[i].split("").reverse().join("") + "\n";
@@ -231,7 +230,7 @@ function transliterate() {
   } else if (localStorage.getItem("direction") == null || localStorage.getItem("direction") == undefined || localStorage.getItem("direction") == "latin2avestan") {
     // TODO 2 vareity for h , ń , t̰ , δ , ą̇
     let resultAvestan = "";
-    let textLa = document.getElementById("textarea1").value;
+    let textLa = document.getElementById("textarea1").value.toLowerCase();
     const latinToAvestan = { " ": "⸱", ".": "𐬼", ",": ",", ":": "𐬺", ";": "𐬻", "":"𐬹", "":"𐬽" , "":".", "":"𐬾", "":"𐬿", "?": "?", "!": "!", "\"": "\"", "'": "'", "(": "(", ")": ")", "+": "+", "=": "=", "/": "/", "-": "-", "<": "<", ">": ">", "*": "*", "|": "|", "\\": "\\", "₹": "₹", "{": "{", "}": "}", "[": "[", "]": "]", "_": "_", "%": "%", "@": "@", "ˆ": "ˆ", "`": "`", "´": "´", "·": "·", "˙": "˙", "¯": "¯", "¨": "¨", "˚": "˚", "˝": "˝", "ˇ": "ˇ", "¸": "¸", "˛": "˛", "˘": "˘", "’": "’", "h":"𐬵", "ṣ̌":"𐬴", "š́":"𐬳", "ž":"𐬲", "š":"𐬱", "z":"𐬰", "s":"𐬯", "l":"𐬮", "r":"𐬭", "uu":"𐬎𐬎", "v":"𐬬", "ii":"𐬌𐬌", "ẏ":"𐬫", "y":"𐬪", "m̨":"𐬩", "m":"𐬨", "ṇ":"𐬧", "ń":"𐬦", "n":"𐬥", "ŋᵛ":"𐬤", "ŋ́":"𐬣", "ŋ":"𐬢", "β":"𐬡", "b":"𐬠", "f":"𐬟", "p":"𐬞", "t̰":"𐬝", "δ":"𐬜", "d":"𐬛", "ϑ":"𐬚", "θ":"𐬚", "t":"𐬙", "j":"𐬘", "c":"𐬗", "γ":"𐬖", "ġ":"𐬕", "g":"𐬔", "xᵛ":"𐬓", "x́":"𐬒", "x":"𐬑", "k":"𐬐","ū":"𐬏","u":"𐬎","ī":"𐬍","i":"𐬌","ō":"𐬋","o":"𐬊","ē":"𐬉","e":"𐬈","ǝ̄":"𐬇","ǝ":"𐬆","ə̄":"𐬇","ə":"𐬆","ą̇":"𐬅","ą":"𐬄","ā̊":"𐬃","å":"𐬂","ā":"𐬁","a":"𐬀" };
 
     for (let u = 0; u < textLa.length; u++) {
