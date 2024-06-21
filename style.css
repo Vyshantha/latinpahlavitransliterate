@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 @font-face {
-  font-family: 'Book Pahlavi'; 
+  font-family: 'Book-Pahlavi'; 
   font-style: normal;
   font-display: swap;
   font-weight: 400;
-  src: url('PAHLAVI.woff') format('woff')
+  src: url('./fonts/BIL-Pahlavi.ttf') format('truetype'), 
+    url('./fonts/BIL-Pahlavi.woff') format('woff');
 } 
 
 *{
@@ -44,8 +45,8 @@ body{
   font-size: 16px;
 }
 .bookPahlavi{
-  font-family: 'Book Pahlavi';
-  font-size: 30px;
+  font-family: 'Book-Pahlavi';
+  font-size: 50px;
 }
 .text-input textarea{
   height: 250px;

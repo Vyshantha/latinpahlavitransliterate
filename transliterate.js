@@ -48,22 +48,6 @@ function copyContent2() {
   navigator.clipboard.writeText(document.getElementById("textarea2").value);
 }
 
-/*
-  TODO : https://gitlab.cceh.uni-koeln.de/mpcd/handbooks/-/wikis/Pahlavi-script
-  TODO : https://gitlab.cceh.uni-koeln.de/mpcd/handbooks/-/wikis/Handbook%20Text%20encoding 
-  
-  TODO : Review 
-    Please find attached the paper by Kianoosh Rezania on Pahlavi transcription and Nyberg's manual with the letter matrix.
-    The information on letter combinations in Nyberg (you can open it as a pdf) are on the pdf-p.49 (book page ۱۳۲-۱۳۳), a script overview is found on p.51 with some information on variations on p.50.
-    Rezania gives a good overview. You can browse the tables, they display nicely the problems, ambiguities and variations of letters.
-    Regarding Avestan, it came into my mind that there is so-called Pāzand writing of Middle Persian. This is using Avestan letters to write a Middle Persian word. One could ignore this for most words, but names in particular are sometimes only attested in Pāzand writing (even in a Pahlavi manuscript). In such cases the Pahlavi writing would be a mere guess, and it would be better to display the word in Avestan script as attested.
-
-  TODO : Multiple phonetic value for same character : matres lectionis
-  TODO : Latin to Pahlavi (Inscriptional or Book) and at times Avestan (Pāzand writing)
-  TODO : Multiple forms of Pahlavi reading
-  TODO : Possible Font modification for glyph representation - https://www.unicode.org/L2/L2024/24040-book-pahlavi.pdf 
-*/
-
 /* Book Pahlavi "Unicode" encode yet to be "standard" : March 25th, 2024
     • J: joining behavior dual-joining (D), right-joining (R), non-joining (N)
     • Xn: independent form of the letter
@@ -173,7 +157,39 @@ function transliterate() {
   }
 
   /*
+    ACCESS TOKEN : glpat-aPyxuBs2Kc4hfVs3NE7j / dodgerblue.vm.dh.uni-koeln.de / read_repository : MPCD
+    TODO : https://gitlab.cceh.uni-koeln.de/mpcd/handbooks/-/wikis/Pahlavi-script
+    TODO : https://gitlab.cceh.uni-koeln.de/mpcd/handbooks/-/wikis/Handbook%20Text%20encoding 
+    
+    TODO : Review 
+      Please find attached the paper by Kianoosh Rezania on Pahlavi transcription and Nyberg's manual with the letter matrix.
+      The information on letter combinations in Nyberg (you can open it as a pdf) are on the pdf-p.49 (book page ۱۳۲-۱۳۳), a script overview is found on p.51 with some information on variations on p.50.
+      Rezania gives a good overview. You can browse the tables, they display nicely the problems, ambiguities and variations of letters.
+      Regarding Avestan, it came into my mind that there is so-called Pāzand writing of Middle Persian. This is using Avestan letters to write a Middle Persian word. One could ignore this for most words, but names in particular are sometimes only attested in Pāzand writing (even in a Pahlavi manuscript). In such cases the Pahlavi writing would be a mere guess, and it would be better to display the word in Avestan script as attested.
+  
+    TODO : Multiple phonetic value for same character : matres lectionis
+    TODO : Latin to Pahlavi (Inscriptional or Book) and at times Avestan (Pāzand writing)
+    TODO : Multiple forms of Pahlavi reading
+    TODO : Possible Font modification for glyph representation - https://www.unicode.org/L2/L2024/24040-book-pahlavi.pdf 
+  */
+
+  /*
     Headline : Avestan, Pārsīg, Pahlavi
+  */
+
+  /*
+    TODO : Psalter, Inscription Pahlavi, Book Pahlavi TABLE to be shared !
+
+    CPD file : for 'idg' for Aramaeograms - hetrograms :  https://gitlab.cceh.uni-koeln.de/mpcd/dicts / https://kosh.uni-koeln.de/mpcd
+    trc / sense / trl / xml
+    pus	son	pws
+    <entry><form><trc>pus</trc><idg>BRḤ</idg></form><etym><lbl>^</lbl><lang>A</lang><mentioned>br-h;</mentioned></etym><form><trl>pws</trl></form> | <trcEvid><lbl>=</lbl><lang>M,</lang><lang>N</lang><mentioned>pus</mentioned></trcEvid> <sense><tr>son</tr></sense>
+      <re n="1"><form><trc>pusar</trc><idg>BRḤl</idg><trl>pwsl</trl></form> | <trcEvid><lang>M</lang><mentioned>pwsr,</mentioned><lang>N</lang><mentioned>pusar</mentioned></trcEvid> <sense><tr>son</tr></sense></re>
+      <re n="2"><form><trc>pusyān</trc><trl>pwsdʾnˈ</trl></form> | <trcEvid><lang>M</lang><mentioned>pwsyʾn</mentioned></trcEvid> <sense><tr>womb</tr></sense></re>
+    </entry>
+    https://kosh.uni-koeln.de/mpcd/cpd/restful/entries?field=trc&query=*&query_type=wildcard&size=10000
+
+    {"b": "!", "lk": "#", "h-h": "$", "s": "%", "05": "*", "lγ": "+", "04": ",", ",": "-", "02": ".", ",": "/", "b connected": "1", "gb": "2", "hb": "3", "hgb": "4", "s2_": "5", "s2b": "6", "ghb": "7", "ghgb": "8", "-l": ":", "-l-": ";", "03": "<", "-lγ": "=", "07": ">", ",": "?", "h": "A", "b": "B", "c": "C", "k": "D", "gh": "E", "gc": "F", "g": "G", "š-": "H", "gk": "I", "s1": "J", "k": "K", "l-": "L", "m": "M", "mn": "N", "Ļ": "O", "p": "P", "QD07M": "Q", "ł": "R", "s2": "S", "t": "T", "zn": "U", "b": "V", "w": "W", "χ": "X", "g": "Y", "z-": "Z", "-lw": "[", "02": "\\", "-lw": "]", "g": "^", ",": "_", "g": "`", "-h": "a", "-b": "b", "-c": "c", "-k": "d", "-gh": "e", "-p": "f", "-g": "g", "-š-": "h", "-gk": "i", "-s1": "j", "-k": "k", "-l": "l", "-m-": "m", "-mw": "n", "-Ļ": "o", "-p": "p", "QDM": "q", "-ł": "r", "-s2-": "s", "-t": "t", "-zw": "u", "-b": "v", "-w": "w", "x": "x", "-g-": "y", "z-": "z", "lw": "{", "b": "|", "-b": "}", "-b_": "¡", "s": "¢", "hg": "£", "-g-": "¥", "sg": "§", "-zw": "¨", "-g-": "©", "s1s2k": "ª", "z": "«", "-l": "¬", "-ł": "®", "m-": "¯", "s2s2": "°", "lz": "±", "-m": "µ", "s1gk": "¶", "s2s2k": "·", "z-": "¸", "g_": "º", "z-": "»", "-z-": "¿", "g-": "Á", "-m": "Â", "hg": "Ä", "h-": "Å", "-z-": "Ç", "-gk": "È", "-gk": "É", "gk": "Ê", "-g-": "Ì", "š": "Í", "-g-": "Î", "-g_": "Ï", "l-": "Ò", "-š": "Ó", "-š-": "Ô", "gw": "Ö", "Ļ": "Ø", "gw": "Ù", "mmw": "Ú", "hw": "Û", "šw": "Ü", "-š": "ß", "ʾYΓ": "à", "-hg": "á", "-h": "â", "zk": "ã", "-hg": "ä", "-h-": "å", "-c": "ç", "s1": "è", "-s1": "é", "-g_": "ê", "h_": "ë", "h_": "ì", "g_": "í", "-h_": "î", "-g": "ï", "-l-": "ò", "hc": "ô", "lm": "õ", "lm-": "ö", ",": "÷", "-Ļ": "ø", "-gw": "ù", "-gmmw": "ú", "-hw": "û", "-šw": "ü", "g-": "ÿ", "b": "ı", "mg07mmw": "Œ", "mgmmw": "œ", "-g-": "Ÿ", "hc": "ƒ", "-g-": "ˆ", "m-": "¯", "mw": "˘", "-š-": "˙", "γ": "˚", "m-": "˜", "-k": "˝", "-s1": "Δ", "-z": "Ω", ",": "-", "g_": "‚", "s1s2": "•", "ł": "‰", "ʾhlymnˈ": "‹", "s1s2_": "›", "-g-": "∂", "-b": "√", "s2k": "∞", "-b": "∫", "χ07": "≈", "-lz": "≠", "-m_": "≤", "-mk": "≥", "b": "◊", "hc": "\uF001"}
   */
 
   if (localStorage.getItem("direction") == null || localStorage.getItem("direction") == undefined || localStorage.getItem("direction") == "latin2pahlavi") {
@@ -182,15 +198,9 @@ function transliterate() {
       apparently all capital letters (those are used to indicate Aramaeograms and should be treated like minuscules)
       aleph (ʾ) 
       the wordend marker ˈ (however, I am not sure how that looks like in the inscriptions. In the psalterm, it is a special form of y, in Pahlavi it is identical to w/n/r/ʿ). Is this Latin transcription true inscriptional MP?
-
-      strangely displayed
-      Brackets [...] result in a kind of Pahlavi ln combination. They appear in transcription to display illegible remnants of letters or loss of text that could be restituted. So they should appear in the "original" script, or, if that is meant to represent the original, [...] with content should be omitted with a placeholder, e.g., empty space, instead. This is a general decision that should be done by the principle investigators.
-
-      I would have to check whether t is really written that low (like n) or whether it is normally on the line.
-      Does this information come with the font or do you define that?
     */
     // TODO ":"" ?
-    const latinToPahlavi = { " ": "  ", ".": ".", ",": ",", ";": ";", "?": "?", "!": "!", "\"": "\"", "'": "'", "(": "(", ")": ")", ":": ":", "+": "+", "=": "=", "/": "/", "-": "-", "<": "<", ">": ">", "*": "*", "|": "|", "\\": "\\", "₹": "₹", "{": "{", "}": "}", "[": "[", "]": "]", "_": "_", "%": "%", "@": "@", "ˆ": "ˆ", "`": "`", "´": "´", "·": "·", "˙": "˙", "¯": "¯", "¨": "¨", "˚": "˚", "˝": "˝", "ˇ": "ˇ", "¸": "¸", "˛": "˛", "˘": "˘", "’": "’", "t":"𐭲","š":"𐭱","q":"𐭬","r":"𐭥","c":"𐭰","ṣ":"𐭰","p":"𐭯","s":"𐭮","n":"𐭭","m":"𐭬","l":"𐭫","k":"𐭪","y":"𐭩","ṭ":"𐭨","ḥ":"𐭧","z":"𐭦","w":"𐭥","h":"𐭤","d":"𐭣","g":"𐭢","b":"𐭡","ʾ":"𐭠","1000":"𐭿","100":"𐭾","20":"𐭽","10":"𐭼","4":"𐭻","3":"𐭺","2":"𐭹","1":"𐭸", "ˈ":"", "[...]":"" };
+    const latinToPahlavi = { " ": "  ", ".": ".", ",": ",", ";": ";", "?": "?", "!": "!", "\"": "\"", "'": "'", "(": "(", ")": ")", ":": ":", "+": "+", "=": "=", "/": "/", "-": "-", "<": "<", ">": ">", "*": "*", "|": "|", "\\": "\\", "₹": "₹", "{": "{", "}": "}", "[": "[", "]": "]", "_": "_", "%": "%", "@": "@", "ˆ": "ˆ", "`": "`", "´": "´", "·": "·", "˙": "˙", "¯": "¯", "¨": "¨", "˚": "˚", "˝": "˝", "ˇ": "ˇ", "¸": "¸", "˛": "˛", "˘": "˘", "’": "’", "t":"𐭲","š":"𐭱","q":"𐭬","r":"𐭥","c":"𐭰","ṣ":"𐭰","p":"𐭯","s":"𐭮","n":"𐭭","m":"𐭬","l":"𐭫","k":"𐭪","y":"𐭩","ṭ":"𐭨","ḥ":"𐭧","z":"𐭦","w":"𐭥","h":"𐭤","d":"𐭣","g":"𐭢","b":"𐭡","ʾ":"𐭠","1000":"𐭿","100":"𐭾","20":"𐭽","10":"𐭼","4":"𐭻","3":"𐭺","2":"𐭹","1":"𐭸", "ˈ":"" };
 
     let resultPahlavi = "";
     let textLa = document.getElementById("textarea1").value.toLowerCase();
@@ -216,14 +226,27 @@ function transliterate() {
           The LETTER r is written like the letters w, n, ʿ and the wordendmarker ˈ. It represents the SOUND r.
           The LETTER l represents the SOUND r as well (it is in fact the common letter for this sound). If, however, it is meant to represent the SOUND l (which rarely appears in Middle Persian), it is sometimes marked with a hook.
 
+      strangely displayed
+      Brackets [...] result in a kind of Pahlavi ln combination. They appear in transcription to display illegible remnants of letters or loss of text that could be restituted. So they should appear in the "original" script, or, if that is meant to represent the original, [...] with content should be omitted with a placeholder, e.g., empty space, instead. This is a general decision that should be done by the principle investigators.
+
+      I would have to check whether t is really written that low (like n) or whether it is normally on the line.
+      Does this information come with the font or do you define that?
+
       The word pusar "son" is written pwsl or BRḤl (Aramaeogram + Persian l).
+
     */
     // Word End Marker ˈ
     let resultBookPahlavi = "";
     let textLa = (document.getElementById("textarea1").value != "") ? document.getElementById("textarea1").value : document.getElementById("textarea2").placeholder;
+    const latinToBookPahlavi = {"ʾ":"!","h":"!","<ʾ":"#","<h":"#","ʾ>":"$","h>":"$","<ʾ>":"%","<h>":"%","b":"*","_b":")","z":";","<z":":","l":"@","<l":"A","ł":"D","<ł":"C","łł":"b","Ļ":"F","k":"=","˜k":">","γ":"?","Ḥ":"L","Ḥ>":"M","p":"O","c":"c"," c ":"P","c>":"N","s2":"3","<s2":"j","š":"Q","<š":"R","t>":"T","t":"S","yk":"6","_yk":"p","x":"r","ḆYN":"U","χ":"V","åø":"W","":".","f":"\n","_":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":""};
     let lines = textLa.split("\n");
     for (let i = 0; i < lines.length; i++) {
-      resultBookPahlavi = resultBookPahlavi + lines[i].split("").reverse().join("") + "\n";
+      //resultBookPahlavi = resultBookPahlavi + lines[i].split("").reverse().join("") + "\n";
+      if (textLa[i].indexOf("\n") > -1) { // New Lines
+        resultBookPahlavi = resultBookPahlavi + "\n";
+      } else {
+        resultBookPahlavi = resultBookPahlavi + latinToBookPahlavi[textLa[i]];
+      }
     }
     document.getElementById("textarea2").value = resultBookPahlavi;
     document.getElementById("textarea2").innerHTML = resultBookPahlavi;
