@@ -125,7 +125,7 @@ function copyContent2() {
 */
 
 function loadBookPahlavi() {
-  document.getElementById("textarea2").placeholder = "(Pahlavi)\n ywk gwptn YDE PWN pty krtn. OD gywk. \nHT ycngsnbl YHWWN yt";
+  document.getElementById("textarea2").placeholder = " O#$@l)6 _ 6)l@$#O _ \n    ! # $ % * ) 0 - q e d g + | ; : 8 9 k l @ A D C b F = > ? I H J L M O c P N s , . 3 j Q R T S 6 p r U V W f _ ";
   localStorage.setItem("direction", "latin2bookpahlavi");
   localStorage.setItem("encoding", "Latin");
   document.getElementById("textarea2").classList.add("bookPahlavi");
@@ -133,7 +133,7 @@ function loadBookPahlavi() {
 }
 
 function loadInscriptionalPahlavi() {
-  document.getElementById("textarea2").placeholder = "(𐭯𐭠𐭫𐭮𐭩𐭪)\n 𐭥𐭩𐭠𐭬𐭥 𐭠𐭫𐭤𐭩𐭬 𐭠𐭫 𐭬𐭱𐭤 𐭠𐭤𐭩𐭤 𐭠𐭱𐭥 𐭠𐭤𐭩𐭤 𐭥𐭩𐭠𐭬𐭥 𐭪𐭤 𐭲𐭠𐭬𐭥 𐭫𐭡𐭭𐭩 𐭩𐭱𐭥𐭠𐭫 𐭠𐭤𐭩𐭤 𐭱𐭫𐭧𐭭𐭩 𐭠𐭫𐭩𐭪𐭬";
+  document.getElementById("textarea2").placeholder = " 𐭯𐭠𐭫𐭮𐭩𐭪 \n    𐭥𐭩𐭠𐭬𐭥 𐭠𐭫𐭤𐭩𐭬 𐭠𐭫 𐭬𐭱𐭤 𐭠𐭤𐭩𐭤 𐭠𐭱𐭥 𐭠𐭤𐭩𐭤 𐭥𐭩𐭠𐭬𐭥 𐭪𐭤 𐭲𐭠𐭬𐭥 𐭫𐭡𐭭𐭩 𐭩𐭱𐭥𐭠𐭫 𐭠𐭤𐭩𐭤 𐭱𐭫𐭧𐭭𐭩 𐭠𐭫𐭩𐭪𐭬";
   localStorage.setItem("direction", "latin2pahlavi");
   localStorage.setItem("encoding", "Latin");
   document.getElementById("textarea2").classList.remove("bookPahlavi");
@@ -141,7 +141,7 @@ function loadInscriptionalPahlavi() {
 }
 
 function loadAvestan() {
-  document.getElementById("textarea2").placeholder = "(𐬎𐬞𐬀𐬯𐬙𐬀𐬎𐬎𐬀𐬐𐬀𐬉𐬥𐬀)\n 𐬞𐬎𐬭𐬕𐬍𐬝 𐬛𐬁𐬢𐬁 𐬋 𐬨𐬀𐬌𐬢𐬌𐬌𐬋 𐬑𐬀𐬭𐬛 𐬐𐬎 𐬐𐬋𐬭𐬏𐬀𐬱𐬨 𐬬𐬀𐬝𐬙𐬀𐬭 𐬀𐬌𐬌𐬃 𐬐𐬋𐬭𐬛𐬌𐬮";
+  document.getElementById("textarea2").placeholder = " 𐬎𐬞𐬀𐬯𐬙𐬀𐬎𐬎𐬀𐬐𐬀𐬉𐬥𐬀 \n    𐬞𐬎𐬭𐬕𐬍𐬝 𐬛𐬁𐬢𐬁 𐬋 𐬨𐬀𐬌𐬢𐬌𐬌𐬋 𐬑𐬀𐬭𐬛 𐬐𐬎 𐬐𐬋𐬭𐬏𐬀𐬱𐬨 𐬬𐬀𐬝𐬙𐬀𐬭 𐬀𐬌𐬌𐬃 𐬐𐬋𐬭𐬛𐬌𐬮";
   localStorage.setItem("direction", "latin2avestan");
   localStorage.setItem("encoding", "Latin");
   document.getElementById("textarea2").classList.remove("bookPahlavi");
@@ -237,22 +237,37 @@ function transliterate() {
     */
     // Word End Marker ˈ
     let resultBookPahlavi = "";
-    let textLa = document.getElementById("textarea1").value;
-    const latinToBookPahlavi = {"ʾ":"!","h":"!","<ʾ":"#","<h":"#","ʾ>":"$","h>":"$","<ʾ>":"%","<h>":"%","b":"*","_b":")","z":";","<z":":","l":"@","<l":"A","ł":"D","<ł":"C","łł":"b","Ļ":"F","k":"=","˜k":">","γ":"?","Ḥ":"L","Ḥ>":"M","p":"O","c":"c"," c ":"P","c>":"N","s2":"3","<s2":"j","š":"Q","<š":"R","t>":"T","t":"S","yk":"6","_yk":"p","x":"r","ḆYN":"U","χ":"V","åø":"W","":".","f":"\n","_":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":""};
+    let textLa = document.getElementById("textarea1").value.toLowerCase();
+    const latinToBookPahlavi = {"ʾ":"!","h":"!","<ʾ":"#","<h":"#","ʾ>":"$","h>":"$","<ʾ>":"%","<h>":"%","b":"*","_b":")","z":";","<z":":","l":"@","<l":"A","ł":"D","<ł":"C","łł":"b","ļ":"F","k":"=","˜k":">","γ":"?","ḥ":"L","ḥ>":"M","p":"O","c":"c"," c ":"P","c>":"N","s1":"s","s1^":",","<s1":".","s2":"3","<s2":"j","š":"Q","<š":"R","t>":"T","t":"S","yk":"6","_yk":"p","x":"r","ḇyn":"U","χ":"V","åéìøü":"W","":".","f":"\n","_":""};
+    const letterNotConnectingToLeft = ["ḥ","w","n","ʿ","r","ˈ","k","γ","ļ","p","c","t"]; // P̄ p̄ ?
+    const deepCombiningLetters = {"ʾh":"$#","ʾh":"%#","bb":")*","dd":"e-","yy":"1","mm":"IH","mm":"K","mm":"JH","s1s1":"s,","s1s1":",,","s2s2":"33","šš":"R_Q"}; // ,"":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":""
+    const flatCombiningLetters = {"gg":"0+","zz":";;","zz":":;","ll":"AA","ll":"@A","łł":"D_D","łł":"C_D","šš":"Q_Q"}; // ,"":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":""
     
-    let lines = textLa.split("\n");
-    for (let i = 0; i < lines.length; i++) {
-      //resultBookPahlavi = resultBookPahlavi + lines[i].split("").reverse().join("") + "\n";
+    // let lines = textLa.split("\n");
+    for (let i = 0; i < textLa.length; i++) {
+      // resultBookPahlavi = resultBookPahlavi + lines[i].split("").reverse().join("") + "\n";
       if (textLa[i] && textLa[i].indexOf("\n") > -1) { // New Lines
         resultBookPahlavi = resultBookPahlavi + "\n";
+      } else if (textLa[i] && textLa[i+1] && textLa[i+2] && textLa[i+3] && deepCombiningLetters[textLa[i] + textLa[i+1] + textLa[i+2] + textLa[i+3]]) { // s1 , s2
+        resultBookPahlavi = resultBookPahlavi + deepCombiningLetters[textLa[i] + textLa[i+1] + textLa[i+2] + textLa[i+3]];
+        i = i + 3;
+      } else if (textLa[i] && textLa[i+1] && deepCombiningLetters[textLa[i] + textLa[i+1]]) {     // TODO when deep based on left joining
+        resultBookPahlavi = resultBookPahlavi + deepCombiningLetters[textLa[i] + textLa[i+1]];
+        i = i + 1;
+      } else if (textLa[i] && textLa[i+1] && flatCombiningLetters[textLa[i] + textLa[i+1]]) {     // TODO when flat or high based on left joining
+        resultBookPahlavi = resultBookPahlavi + flatCombiningLetters[textLa[i] + textLa[i+1]];
+        i = i + 1;
+      } else if (textLa[i] && latinToBookPahlavi[textLa[i] + textLa[i+1]]) { // s1 , s2
+        resultBookPahlavi = resultBookPahlavi + latinToBookPahlavi[textLa[i] + textLa[i+1]];
+        i = i + 1;
+      } else if (textLa[i] && textLa[i+1] && latinToBookPahlavi[textLa[i] + textLa[i+1]]) {
+        resultBookPahlavi = resultBookPahlavi + latinToBookPahlavi[textLa[i] + textLa[i+1]];
+        i = i + 1;
       } else {
         resultBookPahlavi = resultBookPahlavi + latinToBookPahlavi[textLa[i]];
       }
     }
-    if (resultBookPahlavi.indexOf("undefined") > -1) {
-      resultBookPahlavi = resultBookPahlavi.replaceAll("undefined","");
-    }
-    document.getElementById("textarea2").value = resultBookPahlavi;
+    document.getElementById("textarea2").value = resultBookPahlavi.replaceAll("undefined","");
     document.getElementById("textarea2").innerHTML = resultBookPahlavi;
   } else if (localStorage.getItem("direction") == null || localStorage.getItem("direction") == undefined || localStorage.getItem("direction") == "latin2avestan") {
     // TODO 2 vareity for h , ń , t̰ , δ , ą̇
