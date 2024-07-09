@@ -238,11 +238,24 @@ function transliterate() {
     // Word End Marker ˈ
     let resultBookPahlavi = "";
     let textLa = document.getElementById("textarea1").value.toLowerCase();
-    const latinToBookPahlavi = {"ʾ":"!","h":"!","<ʾ":"#","<h":"#","ʾ>":"$","h>":"$","<ʾ>":"%","<h>":"%","b":"*","_b":")","z":";","<z":":","l":"@","<l":"A","ł":"D","<ł":"C","łł":"b","ļ":"F","k":"=","˜k":">","γ":"?","ḥ":"L","ḥ>":"M","p":"O","c":"c"," c ":"P","c>":"N","s1":"s","s1^":",","<s1":".","s2":"3","<s2":"j","š":"Q","<š":"R","t>":"T","t":"S","yk":"6","_yk":"p","x":"r","ḇyn":"U","χ":"V","åéìøü":"W","":".","f":"\n","_":""};
+    const latinToBookPahlavi = {"ʾ":"!","h":"!","<ʾ":"#","<h":"#","ʾ>":"$","h>":"$","<ʾ>":"%","<h>":"%","b":"*","_b":")","z":";","<z":":","l":"@","<l":"A","ł":"D","<ł":"C","łł":"b","ļ":"F","k":"=","˜k":">","γ":"?","ḥ":"L","ḥ>":"M","p":"O","c":"c"," c ":"P","c>":"N","s1":"s","s1^":",","<s1":".","s2":"3","<s2":"j","š":"Q","<š":"R","t>":"T","t":"S","yk":"6","_yk":"p","x":"r","ḇyn":"U","χ":"V","åéìøü":"W","":".","f":"\n","_":""," ":" "};
     const letterNotConnectingToLeft = ["ḥ","w","n","ʿ","r","ˈ","k","γ","ļ","p","c","t"]; // P̄ p̄ ?
-    const deepCombiningLetters = {"ʾh":"$#","ʾh":"%#","bb":")*","dd":"e-","yy":"1","mm":"IH","mm":"K","mm":"JH","s1s1":"s,","s1s1":",,","s2s2":"33","šš":"R_Q"}; // ,"":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":""
-    const flatCombiningLetters = {"gg":"0+","zz":";;","zz":":;","ll":"AA","ll":"@A","łł":"D_D","łł":"C_D","šš":"Q_Q"}; // ,"":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":""
-    
+    const deepCombiningLetters = {
+      "hʾ":"$#","hʾ":"%#","dʾ":"e#","yʾ":"g#","cʾ":"N#","šʾ":"Q_!","šʾ":"R_!","tʾ":"T#",
+        "bb":")*",
+          "dd":"e-","yy":"1",
+            "mm":"IH","mm":"K","mm":"JH",
+              "s1s1":"s,","s1s1":",,",
+                "s2s2":"33",
+                  "šš":"R_Q"}; // ,"":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":""
+    const flatCombiningLetters = {
+      "bʾ":")!","gʾ":"0!","ḥʾ":"M!","wʾ":"8!","nʾ":"&","zʾ":";!","zʾ":":!","kʾ":"=!","γʾ":"?!","lʾ":"@!","lʾ":"A!","łʾ":"D!","łʾ":"C!","ļʾ":"F!","mʾ":"I!","mʾ":"m","mʾ":"J!","s1ʾ":"s!","s2ʾ":"3!","pʾ":"O!",
+        "gg":"0+",
+          "zz":";;","zz":":;",
+            "ll":"AA","ll":"@A",
+              "łł":"D_D","łł":"C_D",
+                "šš":"Q_Q"}; // ,"":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":""
+    let deepflathigh = "";
     // let lines = textLa.split("\n");
     for (let i = 0; i < textLa.length; i++) {
       // resultBookPahlavi = resultBookPahlavi + lines[i].split("").reverse().join("") + "\n";
@@ -254,6 +267,9 @@ function transliterate() {
       } else if (textLa[i] && textLa[i+1] && deepCombiningLetters[textLa[i] + textLa[i+1]]) {     // TODO when deep based on left joining
         resultBookPahlavi = resultBookPahlavi + deepCombiningLetters[textLa[i] + textLa[i+1]];
         i = i + 1;
+      } else if (textLa[i] && textLa[i+1] && textLa[i+2] && flatCombiningLetters[textLa[i] + textLa[i+1] + textLa[i+2]]) {     // TODO when flat or high based on left joining : s1+ & s2+
+        resultBookPahlavi = resultBookPahlavi + flatCombiningLetters[textLa[i] + textLa[i+1] + textLa[i+2]];
+        i = i + 2;
       } else if (textLa[i] && textLa[i+1] && flatCombiningLetters[textLa[i] + textLa[i+1]]) {     // TODO when flat or high based on left joining
         resultBookPahlavi = resultBookPahlavi + flatCombiningLetters[textLa[i] + textLa[i+1]];
         i = i + 1;
