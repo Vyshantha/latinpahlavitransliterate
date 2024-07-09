@@ -237,16 +237,20 @@ function transliterate() {
     */
     // Word End Marker ˈ
     let resultBookPahlavi = "";
-    let textLa = (document.getElementById("textarea1").value != "") ? document.getElementById("textarea1").value : document.getElementById("textarea2").placeholder;
+    let textLa = document.getElementById("textarea1").value;
     const latinToBookPahlavi = {"ʾ":"!","h":"!","<ʾ":"#","<h":"#","ʾ>":"$","h>":"$","<ʾ>":"%","<h>":"%","b":"*","_b":")","z":";","<z":":","l":"@","<l":"A","ł":"D","<ł":"C","łł":"b","Ļ":"F","k":"=","˜k":">","γ":"?","Ḥ":"L","Ḥ>":"M","p":"O","c":"c"," c ":"P","c>":"N","s2":"3","<s2":"j","š":"Q","<š":"R","t>":"T","t":"S","yk":"6","_yk":"p","x":"r","ḆYN":"U","χ":"V","åø":"W","":".","f":"\n","_":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":""};
+    
     let lines = textLa.split("\n");
     for (let i = 0; i < lines.length; i++) {
       //resultBookPahlavi = resultBookPahlavi + lines[i].split("").reverse().join("") + "\n";
-      if (textLa[i].indexOf("\n") > -1) { // New Lines
+      if (textLa[i] && textLa[i].indexOf("\n") > -1) { // New Lines
         resultBookPahlavi = resultBookPahlavi + "\n";
       } else {
         resultBookPahlavi = resultBookPahlavi + latinToBookPahlavi[textLa[i]];
       }
+    }
+    if (resultBookPahlavi.indexOf("undefined") > -1) {
+      resultBookPahlavi = resultBookPahlavi.replaceAll("undefined","");
     }
     document.getElementById("textarea2").value = resultBookPahlavi;
     document.getElementById("textarea2").innerHTML = resultBookPahlavi;
