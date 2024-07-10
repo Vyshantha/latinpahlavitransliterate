@@ -241,19 +241,19 @@ function transliterate() {
     const latinToBookPahlavi = {"ʾ":"!","h":"!","<ʾ":"#","<h":"#","ʾ>":"$","h>":"$","<ʾ>":"%","<h>":"%","b":"*","_b":")","z":";","<z":":","l":"@","<l":"A","ł":"D","<ł":"C","łł":"b","ļ":"F","k":"=","˜k":">","γ":"?","ḥ":"L","ḥ>":"M","p":"O","c":"c"," c ":"P","c>":"N","s1":"s","s1^":",","<s1":".","s2":"3","<s2":"j","š":"Q","<š":"R","t>":"T","t":"S","yk":"6","_yk":"p","x":"r","ḇyn":"U","χ":"V","åéìøü":"W","":".","f":"\n","_":""," ":" "};
     const letterNotConnectingToLeft = ["ḥ","w","n","ʿ","r","ˈ","k","γ","ļ","p","c","t"]; // P̄ p̄ ?
     const deepCombiningLetters = {
-      "hʾ":"$#","hʾ":"%#","dʾ":"e#","yʾ":"g#","cʾ":"N#","šʾ":"Q_!","šʾ":"R_!","tʾ":"T#",
-        "bb":")*",
-          "dd":"e-","yy":"1",
-            "mm":"IH","mm":"K","mm":"JH",
-              "s1s1":"s,","s1s1":",,",
+      "ʾh":"#$","ʾh":"#%","ʾd":"#e","ʾy":"#g","ʾc":"#N","ʾš":"!_Q","ʾš":"!_R","ʾt":"#T",
+        "bb":"*)",
+          "dd":"-e","yy":"1",
+            "mm":"HI","mm":"K","mm":"HJ",
+              "s1s1":",s","s1s1":",,",
                 "s2s2":"33",
-                  "šš":"R_Q"}; // ,"":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":""
+                  "šš":"Q_R"}; // ,"":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":""
     const flatCombiningLetters = {
-      "bʾ":")!","gʾ":"0!","ḥʾ":"M!","wʾ":"8!","nʾ":"&","zʾ":";!","zʾ":":!","kʾ":"=!","γʾ":"?!","lʾ":"@!","lʾ":"A!","łʾ":"D!","łʾ":"C!","ļʾ":"F!","mʾ":"I!","mʾ":"m","mʾ":"J!","s1ʾ":"s!","s2ʾ":"3!","pʾ":"O!",
-        "gg":"0+",
-          "zz":";;","zz":":;",
-            "ll":"AA","ll":"@A",
-              "łł":"D_D","łł":"C_D",
+      "ʾb":"!)","ʾg":"!0","ʾḥ":"!M","ʾw":"!8","ʾn":"&","ʾz":"!;","ʾz":"!:","ʾk":"!=","ʾγ":"!?","ʾl":"!@","ʾl":"!A","ʾł":"!D","ʾł":"!C","ʾļ":"!F","ʾm":"!I","ʾm":"m","ʾm":"!J","ʾs1":"!s","ʾs2":"!3","ʾp":"!0",
+        "gg":"+0",
+          "zz":";;","zz":";:",
+            "ll":"AA","ll":"A@",
+              "łł":"D_D","łł":"D_C",
                 "šš":"Q_Q"}; // ,"":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":"","":""
     let deepflathigh = "";
     // let lines = textLa.split("\n");
@@ -284,7 +284,7 @@ function transliterate() {
       }
     }
     document.getElementById("textarea2").value = resultBookPahlavi.replaceAll("undefined","");
-    document.getElementById("textarea2").innerHTML = resultBookPahlavi;
+    document.getElementById("textarea2").innerHTML = resultBookPahlavi.replaceAll("undefined","");
   } else if (localStorage.getItem("direction") == null || localStorage.getItem("direction") == undefined || localStorage.getItem("direction") == "latin2avestan") {
     // TODO 2 vareity for h , ń , t̰ , δ , ą̇
     let resultAvestan = "";
